@@ -55,7 +55,7 @@ export default function Projects() {
                   Platform, farklı veri kaynaklarından çektiği bilgileri bir araya getirir, belirlenmiş strateji ve risk profiline göre kullanıcıya anlamlı bir çerçeve sunar. Risk toleransı düşük bir kullanıcı için daha korumacı portföy önerileri üretirken, daha agresif profiller için farklı senaryolar simüle edebilir. Bunu yaparken klasik "hazır tavsiye" yaklaşımından uzak durur; kullanıcının kararını destekleyen, nedenleriyle açıklanmış öneriler üretir.
                 </p>
 
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-4">
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 space-y-4">
                   <h3 className="text-xl font-semibold text-white">Galgo Nasıl Çalışır?</h3>
                   <ul className="space-y-3 text-white/70">
                     <li className="flex items-start gap-2">
@@ -140,7 +140,7 @@ export default function Projects() {
                   ProtoNest, üretim süreçlerini yapay zekâ destekli bir bakış açısıyla ele alır. 2D veya 3D çizimleri analiz ederek hangi parçanın hangi yerleşimle, hangi malzeme üzerinde, hangi sırayla kesilmesinin daha verimli olacağını hesaplar. Böylece tek tek insan tarafından hazırlanan nesting planları yerine, saniyeler içinde optimize edilmiş yerleşim önerileri sunar.
                 </p>
 
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-4">
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 space-y-4">
                   <h3 className="text-xl font-semibold text-white">ProtoNest'in Yetenekleri</h3>
                   <ul className="space-y-3 text-white/70">
                     <li className="flex items-start gap-2">
@@ -168,19 +168,19 @@ export default function Projects() {
                     ProtoNest, sadece malzeme tasarrufu sağlamakla kalmaz; planlama süreçlerini hızlandırır, üretim hatlarındaki öngörülebilirliği artırır ve operasyonel kararları veri temelli hale getirir. Tipik bir kullanım senaryosunda:
                   </p>
                   <div className="grid sm:grid-cols-3 gap-4 pt-2">
-                    <Card className="bg-white/5 border-white/10 p-4 space-y-2">
+                    <Card className="bg-primary/10 border-primary/20 p-4 space-y-2">
                       <div className="text-2xl font-bold text-green-400" data-testid="text-protonest-saving">%15-20</div>
                       <div className="text-sm text-white/70" data-testid="text-protonest-saving-label">
                         Malzeme israfında azalma
                       </div>
                     </Card>
-                    <Card className="bg-white/5 border-white/10 p-4 space-y-2">
+                    <Card className="bg-primary/10 border-primary/20 p-4 space-y-2">
                       <div className="text-2xl font-bold text-green-400">⚡</div>
                       <div className="text-sm text-white/70">
                         Planlama süresinde ciddi kısalma
                       </div>
                     </Card>
-                    <Card className="bg-white/5 border-white/10 p-4 space-y-2">
+                    <Card className="bg-primary/10 border-primary/20 p-4 space-y-2">
                       <div className="text-2xl font-bold text-green-400">📈</div>
                       <div className="text-sm text-white/70">
                         Operasyonel verimlilikte artış
@@ -189,7 +189,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="text-white/70 leading-relaxed bg-white/5 border border-white/10 rounded-xl p-6">
+                <p className="text-white/70 leading-relaxed bg-primary/10 border border-primary/20 rounded-xl p-6">
                   Tüm bunlar, özellikle rekabet baskısı altında çalışan KOBİ'ler için kritik öneme sahiptir. Üretim maliyetlerinde sağlanan her küçük iyileşme, toplam kârlılıkta ciddi bir fark yaratır. ProtoNest, bu iyileşmeleri sistematik ve tekrarlanabilir hale getirmeyi amaçlar.
                 </p>
               </div>

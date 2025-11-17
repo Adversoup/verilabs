@@ -78,7 +78,7 @@ export default function Home() {
           {/* What We Do Section */}
           <section className="space-y-12">
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Lightbulb className="text-primary" size={28} />
                 </div>
@@ -88,7 +88,7 @@ export default function Home() {
                 </p>
               </Card>
 
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Cpu className="text-primary" size={28} />
                 </div>
@@ -98,7 +98,7 @@ export default function Home() {
                 </p>
               </Card>
 
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Building2 className="text-primary" size={28} />
                 </div>
@@ -194,7 +194,7 @@ export default function Home() {
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Target className="text-primary" size={28} />
                 </div>
@@ -204,7 +204,7 @@ export default function Home() {
                 </p>
               </Card>
 
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Rocket className="text-primary" size={28} />
                 </div>
@@ -214,7 +214,7 @@ export default function Home() {
                 </p>
               </Card>
 
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                   <Users2 className="text-primary" size={28} />
                 </div>

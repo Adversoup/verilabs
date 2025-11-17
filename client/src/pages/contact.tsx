@@ -66,7 +66,7 @@ export default function Contact() {
           </div>
 
           {/* Why Contact Us */}
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8">
             <h2 className="text-xl font-semibold text-white mb-4">Neden Bizimle İletişime Geçebilirsiniz?</h2>
             <ul className="text-white/70 leading-relaxed space-y-3">
               <li className="flex items-start gap-2">
@@ -94,7 +94,7 @@ export default function Contact() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden">
                 <CardHeader>
                   <h2 className="text-xl font-semibold text-white" data-testid="text-form-title">
                     Mesaj Gönderin
@@ -177,7 +177,7 @@ export default function Contact() {
             </div>
 
             <div className="space-y-6">
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden">
                 <CardContent className="pt-6 space-y-4">
                   <div className="flex items-start gap-3">
                     <Mail className="text-primary mt-1 flex-shrink-0" size={20} />
@@ -203,7 +203,7 @@ export default function Contact() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden">
+              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden">
                 <CardHeader>
                   <h3 className="text-lg font-semibold text-white">Sosyal Medya</h3>
                 </CardHeader>

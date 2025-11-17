@@ -61,7 +61,7 @@ export default function Team() {
             {teamMembers.map((member, index) => (
               <Card 
                 key={index}
-                className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate p-6 space-y-4"
+                className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden hover-elevate p-6 space-y-4"
               >
                 <div className="flex items-center gap-4">
                   <Avatar className="w-16 h-16 bg-primary/10 border-2 border-primary/20">
@@ -88,7 +88,7 @@ export default function Team() {
 
         {/* How We Work & Culture */}
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Workflow className="text-primary" size={28} />
             </div>
@@ -98,7 +98,7 @@ export default function Team() {
             </p>
           </Card>
 
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Users className="text-primary" size={28} />
             </div>

@@ -55,7 +55,7 @@ export default function Model() {
 
         {/* What is Venture Studio */}
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Building2 className="text-primary" size={28} />
             </div>
@@ -65,7 +65,7 @@ export default function Model() {
             </p>
           </Card>
 
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Target className="text-primary" size={28} />
             </div>
@@ -91,7 +91,7 @@ export default function Model() {
               return (
                 <Card 
                   key={phase.number} 
-                  className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate"
+                  className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate"
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -117,14 +117,14 @@ export default function Model() {
 
         {/* Why Important & Difference */}
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <h3 className="text-2xl font-semibold text-white mb-4">Neden Önemli?</h3>
             <p className="text-white/70 leading-relaxed">
               Günümüz dünyasında sadece "iyi bir fikir" yeterli değil. Fikirlerin sistematik olarak test edilmesi, doğru ekiple geliştirilebilmesi ve sürdürülebilir bir iş modeline oturtulması gerekiyor. Venture studio modeli, bu süreci şans ve tesadüften çıkarıp, metot ve disiplin içine yerleştirir. Verilabs, bu disiplinin AI odaklı yorumudur.
             </p>
           </Card>
 
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <h3 className="text-2xl font-semibold text-white mb-4">Verilabs'in Farkı</h3>
             <ul className="text-white/70 leading-relaxed space-y-3">
               <li className="flex items-start gap-2">
