@@ -120,11 +120,11 @@ export default function Home() {
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate group">
+              <Card className="bg-gradient-to-br from-primary/10 to-black/5 border-primary/20 backdrop-blur-sm overflow-hidden hover-elevate group">
                 <CardHeader className="space-y-4 pb-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2 flex-1">
-                      <h3 className="text-3xl font-bold text-white group-hover:text-primary transition-colors" data-testid="text-project-galgo-title">
+                      <h3 className="text-3xl font-bold text-white" data-testid="text-project-galgo-title">
                         Galgo
                       </h3>
                       <p className="text-sm text-white/60 font-medium">AI Destekli Finansal İçgörü Motoru</p>
@@ -151,11 +151,11 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate group">
+              <Card className="bg-gradient-to-br from-primary/10 to-black/5 border-primary/20 backdrop-blur-sm overflow-hidden hover-elevate group">
                 <CardHeader className="space-y-4 pb-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2 flex-1">
-                      <h3 className="text-3xl font-bold text-white group-hover:text-primary transition-colors" data-testid="text-project-protonest-title">
+                      <h3 className="text-3xl font-bold text-white" data-testid="text-project-protonest-title">
                         ProtoNest
                       </h3>
                       <p className="text-sm text-white/60 font-medium">AI Destekli Üretim Zekâsı</p>
