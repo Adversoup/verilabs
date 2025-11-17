@@ -13,9 +13,8 @@ export default function Home() {
         description="Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir."
         path="/"
       />
-      <div className="space-y-32">
-        {/* Hero Section with Video Background */}
-        <section className="relative -mx-4 overflow-hidden">
+      {/* Hero Section with Video Background - Full Width */}
+      <section className="relative w-screen -ml-[50vw] left-1/2 overflow-hidden">
           {/* Video Background */}
           <div className="absolute inset-0 w-full h-full">
             <video
@@ -73,9 +72,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </section>
+      </section>
 
-        <div className="py-12 md:py-20 space-y-32">
+      <div className="py-12 md:py-20 space-y-32">
           {/* Features Grid */}
           <section className="space-y-12">
             <div className="text-center space-y-4">
@@ -243,7 +242,6 @@ export default function Home() {
               </Button>
             </Link>
           </section>
-        </div>
       </div>
     </>
   );

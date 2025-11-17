@@ -1,0 +1,878 @@
+<agent3>
+  <project name="Verilabs Website (Agentix Theme, Deep Content)" goal="Agentix Next.js temasını mümkünse kullanarak, yoksa sıfırdan Next.js+Tailwind kurarak, Verilabs için derin içerikli, SEO uyumlu, modern bir AI Venture Studio web sitesi oluştur. Sayfalar: Ana Sayfa, Hakkımızda, Venture Studio, Projeler (Galgo & ProtoNest), Ekibimiz, İletişim. Her sayfada zengin H1/H2/H3 + bullet + card içeriği olsun.">
+    <stack>
+      <frontend>Next.js (App Router), TypeScript</frontend>
+      <style>Tailwind CSS</style>
+      <icons>Lucide (opsiyonel)</icons>
+      <seo>Next Metadata API + next-sitemap</seo>
+      <quality>ESLint + Prettier</quality>
+    </stack>
+
+    <requirements>
+      <item>Önce proje kökünde agentix-nextjs.zip var mı bak; varsa onu ./verilabs altına unzip edip temel tema yapısını kullan.</item>
+      <item>Zip yoksa fallback: create-next-app --typescript --tailwind --app --src-dir.</item>
+      <item>Sayfalar: /, /hakkimizda, /venture-studio, /projeler, /ekibimiz, /iletisim.</item>
+      <item>Navigation bunları içermeli; Partner ve Basın linkleri olmayacak.</item>
+      <item>Her sayfada bol içerik: H1, H2, bazı H3’ler, bullet listeler, card/box tarzı div’ler.</item>
+      <item>Mobil-öncelikli; 360px–1440px aralığında düzgün görünmeli.</item>
+      <item>İletişim sayfasında form + /api/contact POST endpoint’i olacak (şimdilik console.log).</item>
+      <item>SEO için temel metadata + next-sitemap ile robots.txt & sitemap.xml üret.</item>
+    </requirements>
+
+    <commands>
+      <run>mkdir -p verilabs</run>
+
+      <!-- Tema varsa kullan -->
+      <run>if [ -f agentix-nextjs.zip ]; then unzip -q agentix-nextjs.zip -d verilabs; elif [ -f ../agentix-nextjs.zip ]; then unzip -q ../agentix-nextjs.zip -d verilabs; fi</run>
+
+      <!-- Eğer klasör boşsa sıfırdan Next projesi oluştur -->
+      <run>if [ -z "$(ls -A verilabs)" ]; then npx create-next-app@latest verilabs --typescript --eslint --tailwind --src-dir --app --import-alias "@/*"; fi</run>
+
+      <chdir>verilabs</chdir>
+
+      <run>npm i clsx next-sitemap</run>
+      <run>npm i -D prettier prettier-plugin-tailwindcss</run>
+    </commands>
+
+    <files>
+      <!-- Header -->
+      <file path="src/components/Header.tsx"><![CDATA[
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+
+const nav = [
+  { href: "/", label: "Ana Sayfa" },
+  { href: "/hakkimizda", label: "Hakkımızda" },
+  { href: "/venture-studio", label: "Venture Studio" },
+  { href: "/projeler", label: "Projeler" },
+  { href: "/ekibimiz", label: "Ekibimiz" },
+  { href: "/iletisim", label: "İletişim" }
+];
+
+export default function Header() {
+  const pathname = usePathname();
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050815]/80 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+        <Link href="/" className="text-lg font-semibold text-white">
+          Verilabs
+        </Link>
+        <nav className="hidden items-center gap-6 text-sm md:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={clsx(
+                "text-white/70 hover:text-white transition",
+                pathname === item.href && "text-white"
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <Link
+          href="/iletisim"
+          className="hidden rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 md:inline-flex"
+        >
+          Bize Ulaşın
+        </Link>
+      </div>
+    </header>
+  );
+}
+      ]]></file>
+
+      <!-- Footer -->
+      <file path="src/components/Footer.tsx"><![CDATA[
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="mt-24 border-t border-white/10">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 text-sm text-white/80 md:grid-cols-4">
+        <div>
+          <h3 className="mb-3 text-white font-semibold">Verilabs</h3>
+          <p>
+            Verilabs, yapay zekâ ile işleyen ürünler geliştirir, büyütür ve
+            ölçeklenebilir teknoloji şirketlerine dönüştürür.
+          </p>
+        </div>
+        <div>
+          <h4 className="mb-2 text-white font-medium">Site Haritası</h4>
+          <ul className="space-y-1">
+            <li><Link href="/hakkimizda">Hakkımızda</Link></li>
+            <li><Link href="/venture-studio">Venture Studio</Link></li>
+            <li><Link href="/projeler">Projeler</Link></li>
+            <li><Link href="/ekibimiz">Ekibimiz</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="mb-2 text-white font-medium">Bağlantılar</h4>
+          <ul className="space-y-1">
+            <li><a href="https://www.linkedin.com/company/verilabs" target="_blank">LinkedIn</a></li>
+            <li><a href="https://x.com/verilabs_ai" target="_blank">X (Twitter)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="mb-2 text-white font-medium">İletişim</h4>
+          <ul className="space-y-1">
+            <li>info@verilabs.ai</li>
+            <li>İstanbul, Türkiye</li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-white/10 py-6 text-center text-xs text-white/60">
+        © {new Date().getFullYear()} Verilabs. Tüm hakları saklıdır.
+      </div>
+    </footer>
+  );
+}
+      ]]></file>
+
+      <!-- globals.css -->
+      <file path="src/app/globals.css"><![CDATA[
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply min-h-screen bg-gradient-to-b from-[#050815] to-black text-slate-100;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4;
+}
+
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur;
+}
+
+.section-title {
+  @apply text-3xl sm:text-4xl font-semibold tracking-tight;
+}
+
+.lead {
+  @apply text-lg text-white/80;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-500;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3 text-sm font-medium text-white/80 transition hover:bg-white/5;
+}
+      ]]></file>
+
+      <!-- layout.tsx -->
+      <file path="src/app/layout.tsx" replace="true"><![CDATA[
+import type { Metadata } from "next";
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://verilabs.ai"),
+  title: "Verilabs – AI Venture Studio",
+  description:
+    "Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir.",
+  openGraph: {
+    title: "Verilabs – AI Venture Studio",
+    description: "Fikirden ürüne, üründen şirkete uzanan bir AI venture studio.",
+    url: "https://verilabs.ai",
+    siteName: "Verilabs"
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@verilabs_ai",
+    creator: "@verilabs_ai"
+  }
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="tr">
+      <body>
+        <Header />
+        <main className="container">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
+      ]]></file>
+
+      <!-- ANA SAYFA / -->
+      <file path="src/app/page.tsx" replace="true"><![CDATA[
+import Link from "next/link";
+
+export default function Page() {
+  return (
+    <section className="py-16 space-y-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight">
+          Verilabs – AI Venture Studio
+        </h1>
+        <p className="mt-6 lead">
+          Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler
+          geliştirir, büyütür ve global çıkışlara hazır hale getirir. Sadece yazılım
+          üreten bir ekip değiliz; geleceğin iş modellerini inşa eden bir venture
+          studio&apos;yuz.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Link href="/projeler" className="btn-primary">
+            Projelerimizi Keşfet
+          </Link>
+          <Link href="/venture-studio" className="btn-ghost">
+            Venture Studio Yaklaşımımız
+          </Link>
+        </div>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Ne Yapıyoruz?</h2>
+          <p className="text-white/80">
+            Verilabs, fikir aşamasındaki konseptleri veriye dayalı analizlerle
+            değerlendirir, hızlı prototipleme teknikleriyle hayata geçirir ve
+            ölçeklenebilir ürünlere dönüştürür. Her proje, baştan itibaren bir
+            şirket adayı olarak tasarlanır; altyapısı, mimarisi ve iş modeli buna
+            göre kurgulanır.
+          </p>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Neden AI Merkezde?</h2>
+          <p className="text-white/80">
+            Yapay zekâ, bugün sadece bir ek özellik değil; iş modellerini yeniden
+            tanımlayan temel bir katman. Verilabs&apos;ta süreçlerimizi, kullanıcı
+            deneyimini ve karar mekanizmalarını AI destekli tasarlıyoruz. Böylece
+            her ürün, piyasaya çıktığı gün itibarıyla veriyle beslenebilen, öğrenen
+            ve gelişen yaşayan bir organizma haline geliyor.
+          </p>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Hangi Alanlarda Çalışıyoruz?</h2>
+          <p className="text-white/80">
+            Finansal içgörüden üretim optimizasyonuna kadar uzanan yelpazede
+            çalışıyoruz. Galgo, yatırımcılar için AI destekli karar destek sistemi
+            sunarken; ProtoNest, üreticilerin malzeme kullanımını ve süreç
+            verimliliğini yapay zekâ ile yeniden tanımlıyor.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="card">
+          <h2 className="text-2xl font-semibold mb-3">Galgo – Finansal İçgörü Motoru</h2>
+          <p className="text-white/80">
+            Galgo, dağınık veri kaynakları, karmaşık tablolar ve takip edilmesi güç
+            piyasa dinamikleri arasında sıkışmış yatırımcılara yapay zekâ ile
+            desteklenmiş net bir görünürlük sunar. Farklı veri kaynaklarından
+            topladığı bilgileri anlamlandırır, risk-getiri dengesini analiz eder ve
+            kullanıcıya anlaşılır öneriler üretir. Yatırım kararlarını tesadüfe
+            bırakmak yerine, veriyle konuşan bir yapıya dönüştürmeyi hedefler.
+          </p>
+          <Link href="/projeler#galgo" className="mt-4 inline-flex text-sm text-indigo-300 hover:text-indigo-200">
+            Galgo hakkında daha fazla bilgi →
+          </Link>
+        </div>
+        <div className="card">
+          <h2 className="text-2xl font-semibold mb-3">ProtoNest – Üretim Zekâsı</h2>
+          <p className="text-white/80">
+            ProtoNest, özellikle üretim yapan KOBİ&apos;ler için tasarlanmış bir
+            yapay zekâ platformudur. 2D ve 3D çizimlerden anlam çıkarır, malzeme
+            kullanımını optimize eder ve nesting algoritmalarıyla israfı azaltır.
+            Amaç, üretim süreçlerini sadece daha hızlı değil, daha akıllı hale
+            getirmektir. ProtoNest ile üreticiler, tasarım anından itibaren maliyet
+            ve verimlilik dengesini görebilir.
+          </p>
+          <Link href="/projeler#protonest" className="mt-4 inline-flex text-sm text-indigo-300 hover:text-indigo-200">
+            ProtoNest hakkında daha fazla bilgi →
+          </Link>
+        </div>
+      </div>
+
+      <div className="grid gap-4 text-center sm:grid-cols-3">
+        <div className="card">
+          <div className="text-4xl font-bold">3</div>
+          <div className="mt-1 text-white/70">Aktif ürün hattı</div>
+        </div>
+        <div className="card">
+          <div className="text-4xl font-bold">2</div>
+          <div className="mt-1 text-white/70">AI odaklı çekirdek proje</div>
+        </div>
+        <div className="card">
+          <div className="text-4xl font-bold">1</div>
+          <div className="mt-1 text-white/70">Ortak vizyon: geleceği kodlamak</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- HAKKIMIZDA -->
+      <file path="src/app/hakkimizda/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-10">
+      <header className="space-y-4 max-w-3xl">
+        <h1 className="section-title">Hakkımızda</h1>
+        <p className="lead">
+          Verilabs, yapay zekâ temelli projeleri sadece geliştiren değil, onları iş
+          modeline ve şirketleşme yolculuğuna dönüştüren bir teknoloji stüdyosudur.
+          Amacımız, kısa vadeli &quot;uygulama teslimi&quot; yaklaşımının ötesine geçerek,
+          sürdürülebilir ürünler ve ölçeklenebilir şirketler inşa etmektir.
+        </p>
+      </header>
+
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Misyonumuz</h2>
+          <p className="text-white/80">
+            Misyonumuz, karmaşık problemleri sade, uygulanabilir ve ölçülebilir
+            çözümlere dönüştürmektir. Bunu yaparken yapay zekâyı merkezde konumlandırır,
+            veriyle beslenen, öğrenen ve kendi kendini geliştirebilen sistemler
+            tasarlarız. Her projede gerçek bir problemi adreslemeye, net bir değer
+            önermesi tanımlamaya ve kullanıcıların hayatında ölçülebilir bir fark
+            yaratmaya odaklanırız.
+          </p>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Vizyonumuz</h2>
+          <p className="text-white/80">
+            Vizyonumuz, Türkiye çıkışlı ama global ölçekte etkili bir AI venture
+            studio olmaktır. Geliştirdiğimiz her ürün, ilk günden itibaren sadece
+            yerel pazarı değil, uluslararası ölçekte genişleyebilecek bir yapıyı
+            hedefler. Bu yüzden teknik mimariden marka kurgusuna, lisanslama
+            modellerinden entegrasyon stratejilerine kadar her kararı küresel
+            ölçeklenebilirlik perspektifiyle ele alıyoruz.
+          </p>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Yaklaşımımız</h2>
+          <ul className="list-disc list-inside text-white/80 space-y-1">
+            <li>Fikirden ürüne, üründen şirkete giden yolu birlikte tasarlamak</li>
+            <li>Veri ve kullanıcı geri bildirimi ile karar almak</li>
+            <li>Hızlı prototipleme ve tekrar tekrar doğrulama</li>
+            <li>Yatırım ve exit potansiyelini en başta kurgulamak</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="card space-y-4">
+        <h2 className="text-2xl font-semibold">Değerlerimiz</h2>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-lg font-semibold mb-1">Dürüstlük ve Şeffaflık</h3>
+            <p className="text-white/80">
+              Verilabs&apos;ta metrikler süslenmez, problemlerse saklanmaz. Bir proje
+              beklenen hızda ilerlemiyorsa bunu açıkça masaya koyar, gerekli pivot
+              kararlarını veriye bakarak alırız. Bu şeffaflık, hem zekice inşa edilmiş
+              ürünler hem de güvenilir iş ilişkileri kurmamızı sağlar.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-1">Bilimsel Düşünce</h3>
+            <p className="text-white/80">
+              Varsayımlarımızı test eder, hipotezlerimizi deneyle doğrularız. Kullanıcı
+              davranışlarını anlamak için sezgiye değil, verilere bakarız. &quot;Bu böyle
+              yapılır&quot; klişesini kabul etmeyip, her alanda daha iyisini mümkün kılan
+              senaryoları keşfetmeye çalışırız.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-1">Öğrenme İştahı</h3>
+            <p className="text-white/80">
+              Her yeni proje, önceki deneyimlerimizin üzerine inşa edilen bir
+              öğrenme katmanıdır. Kullandığımız teknolojiler, kurduğumuz mimariler,
+              seçtiğimiz iş ortakları ve benimsediğimiz modeller zamanla rafine edilir.
+              Verilabs için &quot;yeterince iyi&quot; diye bir seviye yoktur; daha iyisi için
+              yer her zaman vardır.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-1">İnsan Merkezlilik</h3>
+            <p className="text-white/80">
+              Yapay zekâdan bahsediyor olmamız, odağımızın insan olmadığı anlamına
+              gelmez. Tersine, tüm sistemleri insan davranışını, ihtiyaçlarını ve
+              sınırlılıklarını daha iyi anlamak için kullanırız. Ürünlerimizi, insanların
+              günlük kararlarını daha kolay, daha bilinçli ve daha verimli hale getirmek
+              için tasarlarız.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- VENTURE STUDIO -->
+      <file path="src/app/venture-studio/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-10">
+      <header className="space-y-4 max-w-3xl">
+        <h1 className="section-title">Venture Studio</h1>
+        <p className="lead">
+          Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları
+          sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder.
+          Verilabs, klasik ajans mantığından farklı olarak, her projeyi kendi
+          markasına, kendi yol haritasına ve kendi yatırım hikâyesine sahip
+          bağımsız bir girişim adayı olarak ele alır.
+        </p>
+      </header>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Venture Studio Nedir?</h2>
+          <p className="text-white/80">
+            Bir venture studio, tek tek müşteri projeleri geliştirmek yerine, kendi
+            portföyüne ait ürünler ve şirketler inşa eder. Fikir, içeriden veya
+            dışarıdan gelebilir; önemli olan, bu fikrin doğrulanmış bir probleme
+            çözüm üretip üretmediği ve yapay zekâ gibi kaldıraçlara dayanıp
+            dayanmadığıdır. Studio, fikri analiz eder, MVP&apos;yi geliştirir, pazar
+            testlerini yapar, büyüme stratejisini kurar ve nihayetinde ortaya
+            çıkan projeyi ayrı bir girişim olarak spin-off edebilir.
+          </p>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Verilabs Nasıl Konumlanıyor?</h2>
+          <p className="text-white/80">
+            Verilabs, venture studio modelini yapay zekâ ekseninde uygulayan bir
+            yapı olarak konumlanır. Bizim için &quot;ürün&quot;, bir kod deposundan ibaret
+            değildir; kullanıcılarına net bir değer sunan, gelir modeli tanımlanmış,
+            ölçeklenmesi planlanmış ve yatırım dosyası kurgulanmış yaşayan bir
+            organizmadır. Bu nedenle ürün geliştirme, iş geliştirme ve teknik mimari
+            aynı masada konuşulur.
+          </p>
+        </div>
+      </div>
+
+      <div className="card space-y-4">
+        <h2 className="text-2xl font-semibold">Verilabs Venture Süreci</h2>
+        <ol className="list-decimal list-inside space-y-3 text-white/80">
+          <li>
+            <strong>Keşif ve Problem Tanımı:</strong> Önce problemi tarif ederiz,
+            çözümü değil. Hangi sektörde, hangi aktörler arasında, hangi maliyet
+            ya da verimsizlikten bahsettiğimizi net biçimde ortaya koyarız.
+          </li>
+          <li>
+            <strong>Hipotez ve Fikir Geliştirme:</strong> Yapay zekânın bu problemde
+            gerçekten fark yaratacağı alanları belirleriz. Modelleme türünü,
+            veri kaynaklarını ve olası çıktı biçimlerini tartışırız.
+          </li>
+          <li>
+            <strong>MVP ve Prototipleme:</strong> Gereksiz özelliklerle vakit
+            kaybetmek yerine, problemin kalbini test eden bir MVP geliştiririz.
+            Kullanıcı geri bildirimi ve veri toplama en baştan tasarının parçasıdır.
+          </li>
+          <li>
+            <strong>Pazar Testi ve Validasyon:</strong> Ürünün gerçekten değer
+            üretip üretmediğini, kullanıcıların ödeme isteğini, entegrasyon
+            bariyerlerini ve büyüme potansiyelini test ederiz.
+          </li>
+          <li>
+            <strong>Spin-off ve Ölçeklendirme:</strong> Başarılı ürünleri ayrı bir
+            marka ve şirket kimliği altında spin-off ederek yatırım ve büyüme için
+            hazır hale getiririz.
+          </li>
+        </ol>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="card">
+          <h3 className="text-lg font-semibold mb-1">Neden Önemli?</h3>
+          <p className="text-white/80">
+            Günümüz dünyasında sadece &quot;iyi bir fikir&quot; yeterli değil. Fikirlerin
+            sistematik olarak test edilmesi, doğru ekiple geliştirilebilmesi ve
+            sürdürülebilir bir iş modeline oturtulması gerekiyor. Venture studio
+            modeli, bu süreci şans ve tesadüften çıkarıp, metot ve disiplin
+            içine yerleştirir. Verilabs, bu disiplinin AI odaklı yorumudur.
+          </p>
+        </div>
+        <div className="card">
+          <h3 className="text-lg font-semibold mb-1">Verilabs&apos;in Farkı</h3>
+          <ul className="list-disc list-inside text-white/80 space-y-1">
+            <li>AI ve veri odaklı düşünce yapısını merkeze alması</li>
+            <li>Sadece teknik değil, iş modeli perspektifiyle karar alması</li>
+            <li>Çoklu proje portföyüyle risk dağıtabilmesi</li>
+            <li>Ürünleri uzun vadeli exit potansiyeliyle kurgulaması</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- PROJELER -->
+      <file path="src/app/projeler/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-12">
+      <header className="space-y-4 max-w-3xl">
+        <h1 className="section-title">Projelerimiz</h1>
+        <p className="lead">
+          Verilabs çatısı altında şu anda iki çekirdek proje geliştiriyoruz:
+          finansal içgörü motoru <strong>Galgo</strong> ve üretim zekâsı platformu{" "}
+          <strong>ProtoNest</strong>. Her ikisi de yapay zekâyı iş akışlarının
+          merkezine yerleştiriyor; biri yatırımcıların karar süreçlerini, diğeri
+          üreticilerin verimlilik dengesini yeniden tanımlıyor.
+        </p>
+      </header>
+
+      <article id="galgo" className="card space-y-4">
+        <h2 className="text-2xl font-semibold">Galgo – AI Destekli Finansal İçgörü Motoru</h2>
+        <p className="text-white/80">
+          Galgo, finansal karar alma süreçlerinde kaybolan zamanı ve zihinsel
+          yükü azaltmak için tasarlanmış bir yapay zekâ platformudur. Yatırımcılar
+          genellikle çok sayıda kaynaktan veri toplar: borsa ekranları, raporlar,
+          haber akışları, analiz yazıları ve sosyal medya yorumları. Bu dağınıklık
+          arasında hem fırsatları kaçırmak hem de duygusal tepkilere dayalı
+          kararlar almak oldukça kolaydır. Galgo, bu karmaşayı düzenli bir
+          içgörü akışına dönüştürmeyi hedefler.
+        </p>
+        <p className="text-white/80">
+          Platform, farklı veri kaynaklarından çektiği bilgileri bir araya getirir,
+          belirlenmiş strateji ve risk profiline göre kullanıcıya anlamlı bir
+          çerçeve sunar. Risk toleransı düşük bir kullanıcı için daha korumacı
+          portföy önerileri üretirken, daha agresif profiller için farklı senaryolar
+          simüle edebilir. Bunu yaparken klasik &quot;hazır tavsiye&quot; yaklaşımından
+          uzak durur; kullanıcının kararını destekleyen, nedenleriyle açıklanmış
+          öneriler üretir.
+        </p>
+        <h3 className="text-lg font-semibold mt-2">Galgo Nasıl Çalışır?</h3>
+        <ul className="list-disc list-inside text-white/80 space-y-1">
+          <li>
+            Farklı veri kaynaklarından (piyasalar, haberler, raporlar) gelen verileri toplar.
+          </li>
+          <li>
+            Bu verileri kullanıcı profilindeki risk ve hedef parametreleriyle eşleştirir.
+          </li>
+          <li>
+            Makine öğrenimi ve kurallı modellerle olası senaryoları çıkarır.
+          </li>
+          <li>
+            Kullanıcıya sadeleştirilmiş, açıklanabilir içgörüler sunar: &quot;Bu pozisyon
+            portföyündeki risk dengesini şu şekilde etkiliyor&quot; gibi.
+          </li>
+        </ul>
+        <h3 className="text-lg font-semibold mt-2">Kullanıcıya Sağladığı Faydalar</h3>
+        <p className="text-white/80">
+          Galgo, profesyonel yatırımcı ile bireysel yatırımcı arasındaki bilgi ve
+          analiz uçurumunu kapatmaya çalışır. Herkesin Bloomberg terminali veya
+          büyük bir araştırma ekibi olamaz; fakat herkes, karar verirken arkasında
+          veriyle çalışan bir sistem isteyebilir. Galgo tam bu noktada devreye
+          girerek:
+        </p>
+        <ul className="list-disc list-inside text-white/80 space-y-1">
+          <li>Zamandan tasarruf sağlar.</li>
+          <li>Bilgi kirliliğini filtreler.</li>
+          <li>Duygusal karar riskini azaltır.</li>
+          <li>Risk-getiri dengesini daha görünür hale getirir.</li>
+        </ul>
+      </article>
+
+      <article id="protonest" className="card space-y-4">
+        <h2 className="text-2xl font-semibold">ProtoNest – AI Destekli Üretim Optimizasyonu</h2>
+        <p className="text-white/80">
+          ProtoNest, üretim yapan işletmelerin en kritik sorunlarından biri olan
+          malzeme israfını ve düşük verimliliği hedef alır. Özellikle sac, ahşap,
+          plastik gibi levha bazlı malzemelerle çalışan firmalarda kesim planlarının
+          nasıl yapıldığı, doğrudan maliyet kalemlerini etkiler. Geleneksel
+          yöntemlerde bu planlama çoğu zaman deneyime ve manuel hesaplara
+          dayanır; bu da hem hataya hem de ciddi israfa açıktır.
+        </p>
+        <p className="text-white/80">
+          ProtoNest, üretim süreçlerini yapay zekâ destekli bir bakış açısıyla
+          ele alır. 2D veya 3D çizimleri analiz ederek hangi parçanın hangi
+          yerleşimle, hangi malzeme üzerinde, hangi sırayla kesilmesinin daha
+          verimli olacağını hesaplar. Böylece tek tek insan tarafından
+          hazırlanan nesting planları yerine, saniyeler içinde optimize edilmiş
+          yerleşim önerileri sunar.
+        </p>
+        <h3 className="text-lg font-semibold mt-2">ProtoNest&apos;in Yetenekleri</h3>
+        <ul className="list-disc list-inside text-white/80 space-y-1">
+          <li>CAD tabanlı çizimleri içe aktarma ve analiz etme</li>
+          <li>Otomatik nesting algoritmalarıyla optimum yerleşim önerileri</li>
+          <li>Malzeme kullanım oranlarını hesaplama ve raporlama</li>
+          <li>Farklı senaryolara göre maliyet simülasyonları</li>
+        </ul>
+        <h3 className="text-lg font-semibold mt-2">Üretici İçin Değer Önerisi</h3>
+        <p className="text-white/80">
+          ProtoNest, sadece malzeme tasarrufu sağlamakla kalmaz; planlama
+          süreçlerini hızlandırır, üretim hatlarındaki öngörülebilirliği artırır
+          ve operasyonel kararları veri temelli hale getirir. Tipik bir kullanım
+          senaryosunda:
+        </p>
+        <ul className="list-disc list-inside text-white/80 space-y-1">
+          <li>Malzeme israfında %15–20 arası azalma</li>
+          <li>Planlama süresinde ciddi kısalma</li>
+          <li>Operasyonel verimlilikte gözle görülür artış</li>
+        </ul>
+        <p className="text-white/80">
+          Tüm bunlar, özellikle rekabet baskısı altında çalışan KOBİ&apos;ler için
+          kritik öneme sahiptir. Üretim maliyetlerinde sağlanan her küçük iyileşme,
+          toplam kârlılıkta ciddi bir fark yaratır. ProtoNest, bu iyileşmeleri
+          sistematik ve tekrarlanabilir hale getirmeyi amaçlar.
+        </p>
+      </article>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- EKİBİMİZ -->
+      <file path="src/app/ekibimiz/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-10">
+      <header className="space-y-4 max-w-3xl">
+        <h1 className="section-title">Ekibimiz</h1>
+        <p className="lead">
+          Verilabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım
+          disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten
+          oluşur. Ünvanlardan çok, üretilen değere ve ortak vizyona önem veririz.
+        </p>
+      </header>
+
+      <div className="card space-y-4">
+        <h2 className="text-2xl font-semibold">Çekirdek Ekip</h2>
+        <ul className="space-y-2 text-white/80">
+          <li>
+            <strong>Levent Gözener – Founder &amp; Product Architect:</strong>{" "}
+            Verilabs&apos;in ürün vizyonunu, teknik mimariyle iş modeli arasında köprü
+            kurarak şekillendirir. Farklı sektörlerden edindiği deneyimi,
+            yapay zekâ ve SaaS dünyasına taşır.
+          </li>
+          <li>
+            <strong>[İsim] – AI Engineer:</strong> Modellerin seçimi, eğitimi,
+            ince ayarı ve üretim ortamına alınmasından sorumludur.
+          </li>
+          <li>
+            <strong>[İsim] – Frontend Developer:</strong> Kullanıcı arayüzlerini
+            modern, hızlı ve sezgisel deneyimlere dönüştürür.
+          </li>
+          <li>
+            <strong>[İsim] – Data Scientist:</strong> Veri modelleme, metrik
+            üretimi ve içgörü çıkarma süreçlerini yönetir.
+          </li>
+          <li>
+            <strong>[İsim] – Growth &amp; Partnerships:</strong> Ürünlerin pazar
+            konumlandırmasını, iş ortaklıklarını ve büyüme stratejilerini
+            şekillendirir.
+          </li>
+        </ul>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Nasıl Çalışıyoruz?</h2>
+          <p className="text-white/80">
+            Verilabs ekibi, sabit silolar yerine akışkan takımlar halinde
+            çalışır. Bir projede ürün tasarımı konuşulurken masada hem geliştirici
+            hem veri bilimci hem de iş geliştirme tarafı bulunur. Bu sayede kararlar,
+            tek bir perspektife sıkışmadan alınır. Teknik uygulanabilirlik, kullanıcı
+            deneyimi ve iş modeli aynı anda tartılır.
+          </p>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-semibold mb-2">Kültürümüz</h2>
+          <ul className="list-disc list-inside text-white/80 space-y-1">
+            <li>Hiyerarşi yerine sorumluluk alanları</li>
+            <li>Uzun toplantılar yerine net gündemli oturumlar</li>
+            <li>Kod kalitesi kadar problem kalitesine de önem verme</li>
+            <li>Sürekli öğrenme ve paylaşım kültürü</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="card space-y-4">
+        <h2 className="text-2xl font-semibold">Neyi Önemsiyoruz?</h2>
+        <p className="text-white/80">
+          Verilabs&apos;ta güçlü CV&apos;lerden çok, güçlü katkılar önemlidir. Bir ekip
+          üyesinden beklediğimiz şey; merak duygusunu kaybetmemesi, veriye ve
+          geribildirime açık olması ve &quot;bu iş daha iyi nasıl yapılır&quot; sorusunu
+          her gün yeniden sormasıdır. Hatalarımızı saklamayız; onları öğrenme
+          araçlarına dönüştürmeye çalışırız.
+        </p>
+        <p className="text-white/80">
+          Ekibimiz büyürken dikkat ettiğimiz en kritik nokta, kültürel uyumdur.
+          Her yeni yetenek, sadece teknik beceri getirmez; aynı zamanda o kültürü
+          şekillendiren bir aktör haline gelir. Bu nedenle ekip genişlerken
+          değerlerimizden taviz vermemeye özen gösteririz.
+        </p>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- İLETİŞİM + API -->
+      <file path="src/app/iletisim/page.tsx"><![CDATA[
+"use client";
+import { useState } from "react";
+
+export default function Page() {
+  const [state, setState] = useState<"idle" | "loading" | "ok" | "err">("idle");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setState("loading");
+    const form = new FormData(e.currentTarget);
+    const res = await fetch("/api/contact", { method: "POST", body: form });
+    setState(res.ok ? "ok" : "err");
+  }
+
+  return (
+    <section className="py-16 space-y-10 max-w-3xl">
+      <header className="space-y-4">
+        <h1 className="section-title">İletişim</h1>
+        <p className="lead">
+          Bir fikriniz, yatırım düşünceniz, iş birliği teklifiniz ya da sadece
+          merak ettiğiniz bir soru mu var? Verilabs ile iletişime geçmek için
+          resmi kanalların ötesinde, samimi bir diyalog alanı açmaya çalışıyoruz.
+          Aşağıdaki form üzerinden bize ulaşabilir, doğrudan e-posta gönderebilir
+          veya sosyal medya hesaplarımız üzerinden bağlantı kurabilirsiniz.
+        </p>
+      </header>
+
+      <div className="card space-y-3">
+        <h2 className="text-xl font-semibold">Neden Bizimle İletişime Geçebilirsiniz?</h2>
+        <ul className="list-disc list-inside text-white/80 space-y-1">
+          <li>Verilabs projeleri hakkında daha detaylı bilgi almak için</li>
+          <li>Galgo veya ProtoNest ile ilgili iş birliği imkanlarını konuşmak için</li>
+          <li>Yeni bir AI projesi fikrini birlikte değerlendirmek için</li>
+          <li>Yatırım veya ortaklık modelleri hakkında bilgi alışverişi için</li>
+          <li>Ekibimizle tanışmak, kültürümüzü daha yakından görmek için</li>
+        </ul>
+      </div>
+
+      <form onSubmit={onSubmit} className="card space-y-4">
+        <div>
+          <label className="mb-1 block text-sm font-medium text-white/80">
+            Adınız
+          </label>
+          <input
+            name="name"
+            required
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm outline-none focus:border-indigo-400"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium text-white/80">
+            E-posta
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm outline-none focus:border-indigo-400"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium text-white/80">
+            Konu
+          </label>
+          <input
+            name="subject"
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm outline-none focus:border-indigo-400"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium text-white/80">
+            Mesajınız
+          </label>
+          <textarea
+            name="message"
+            rows={6}
+            required
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm outline-none focus:border-indigo-400"
+          />
+        </div>
+        <button
+          className="btn-primary"
+          disabled={state === "loading"}
+        >
+          {state === "loading" ? "Gönderiliyor..." : "Mesaj Gönder"}
+        </button>
+        {state === "ok" && (
+          <p className="text-sm text-green-400">
+            Mesajınızı aldık. En kısa sürede size dönüş yapmaya çalışacağız.
+          </p>
+        )}
+        {state === "err" && (
+          <p className="text-sm text-red-400">
+            Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan
+            info@verilabs.ai adresine e-posta gönderin.
+          </p>
+        )}
+      </form>
+
+      <div className="card space-y-2 text-sm text-white/80">
+        <h2 className="text-lg font-semibold">Diğer Kanallar</h2>
+        <p>📧 E-posta: info@verilabs.ai</p>
+        <p>🔗 LinkedIn: linkedin.com/company/verilabs</p>
+        <p>🐦 X (Twitter): @verilabs_ai</p>
+        <p>📍 Lokasyon: İstanbul, Türkiye</p>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <file path="src/app/api/contact/route.ts"><![CDATA[
+export async function POST(req: Request) {
+  const form = await req.formData();
+  const name = form.get("name");
+  const email = form.get("email");
+  const subject = form.get("subject");
+  const message = form.get("message");
+  console.log("CONTACT_FORM", { name, email, subject, message });
+  return new Response(JSON.stringify({ ok: true }), { status: 200 });
+}
+      ]]></file>
+
+      <!-- next-sitemap -->
+      <file path="next-sitemap.config.js"><![CDATA[
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: process.env.SITE_URL || "https://verilabs.ai",
+  generateRobotsTxt: true,
+  changefreq: "weekly",
+  priority: 0.7
+};
+      ]]></file>
+
+      <patch file="package.json"><![CDATA[
+{
+  "op": "merge",
+  "data": {
+    "scripts": {
+      "postbuild": "next-sitemap"
+    }
+  }
+}
+      ]]></patch>
+    </files>
+
+    <quality_check>
+      <item>npm run build hatasız geçmeli.</item>
+      <item>npm run dev ile /, /hakkimizda, /venture-studio, /projeler, /ekibimiz, /iletisim 200 dönmeli.</item>
+      <item>Header nav linkleri doğru sayfalara gitmeli ve aktif sayfa vurgulanmalı.</item>
+      <item>/robots.txt ve /sitemap.xml oluşmalı (build sonrası).</item>
+      <item>İletişim formu POST /api/contact çağrısında 200 dönmeli ve sunucu logunda form verisi görünmeli.</item>
+      <item>320px–1440px arası ekran genişliklerinde layout bozulmamalı.</item>
+    </quality_check>
+
+    <run_after>
+      <run>npm run dev</run>
+      <note>Site ayakta geldikten sonra içerikleri görsel olarak kontrol et; Galgo ve ProtoNest bölümlerinin uzun ve okunaklı olduğundan emin ol.</note>
+    </run_after>
+  </project>
+</agent3>
