@@ -226,36 +226,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Stats Section */}
-          <section className="bg-gradient-to-r from-white/5 to-white/10 border border-white/10 rounded-2xl p-12 backdrop-blur-sm">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
-              <div className="text-center space-y-3">
-                <div className="text-6xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent" data-testid="text-stat-projects">
-                  3
-                </div>
-                <div className="text-white/70 text-base font-medium" data-testid="text-stat-projects-label">
-                  Aktif Ürün Hattı
-                </div>
-              </div>
-              <div className="text-center space-y-3">
-                <div className="text-6xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent" data-testid="text-stat-exits">
-                  2
-                </div>
-                <div className="text-white/70 text-base font-medium" data-testid="text-stat-exits-label">
-                  AI Odaklı Çekirdek Proje
-                </div>
-              </div>
-              <div className="text-center space-y-3">
-                <div className="text-6xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent" data-testid="text-stat-launches">
-                  1
-                </div>
-                <div className="text-white/70 text-base font-medium" data-testid="text-stat-launches-label">
-                  Ortak Vizyon: Geleceği Kodlamak
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* CTA Section */}
           <section className="text-center max-w-4xl mx-auto space-y-8 px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-white">
