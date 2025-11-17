@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 const navigation = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
-  { href: "/model", label: "Venture Studio Modeli" },
+  { href: "/model", label: "Venture Studio" },
   { href: "/projeler", label: "Projeler" },
   { href: "/ekibimiz", label: "Ekibimiz" },
   { href: "/basin", label: "Basın & Güncellemeler" },
