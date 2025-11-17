@@ -120,7 +120,7 @@ export default function Home() {
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate group">
+              <Card className="bg-primary/10 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate group">
                 <CardHeader className="space-y-4 pb-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2 flex-1">
@@ -151,7 +151,7 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate group">
+              <Card className="bg-primary/10 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate group">
                 <CardHeader className="space-y-4 pb-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2 flex-1">
