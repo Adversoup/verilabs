@@ -1,33 +1,38 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Users } from "lucide-react";
+import { Users, Workflow, Award } from "lucide-react";
 import SEO from "@/components/SEO";
 
 const teamMembers = [
   {
     name: "Levent Gözener",
     role: "Founder & Product Architect",
-    initials: "LG"
+    initials: "LG",
+    description: "Verilabs'in ürün vizyonunu, teknik mimariyle iş modeli arasında köprü kurarak şekillendirir. Farklı sektörlerden edindiği deneyimi, yapay zekâ ve SaaS dünyasına taşır."
   },
   {
-    name: "[isim]",
+    name: "[İsim]",
     role: "AI Engineer",
-    initials: "AI"
+    initials: "AI",
+    description: "Modellerin seçimi, eğitimi, ince ayarı ve üretim ortamına alınmasından sorumludur."
   },
   {
-    name: "[isim]",
+    name: "[İsim]",
     role: "Frontend Developer",
-    initials: "FD"
+    initials: "FD",
+    description: "Kullanıcı arayüzlerini modern, hızlı ve sezgisel deneyimlere dönüştürür."
   },
   {
-    name: "[isim]",
+    name: "[İsim]",
     role: "Data Scientist",
-    initials: "DS"
+    initials: "DS",
+    description: "Veri modelleme, metrik üretimi ve içgörü çıkarma süreçlerini yönetir."
   },
   {
-    name: "[isim]",
+    name: "[İsim]",
     role: "Growth & Partnerships",
-    initials: "GP"
+    initials: "GP",
+    description: "Ürünlerin pazar konumlandırmasını, iş ortaklıklarını ve büyüme stratejilerini şekillendirir."
   }
 ];
 
@@ -36,62 +41,106 @@ export default function Team() {
     <>
       <SEO 
         title="Ekibimiz"
-        description="Biz mühendis, stratejist ve yaratıcıların aynı masada oturduğu bir ekibiz. Her biri farklı bir disiplinden gelse de ortak noktamız aynı: geleceği kodlamak."
+        description="Verilabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur."
         path="/ekibimiz"
       />
-      <div className="py-16 space-y-12">
-      <div className="space-y-6 max-w-4xl">
-        <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight" data-testid="text-page-title">
-          Ekibimiz
-        </h1>
-        <p className="text-lg text-white/80 leading-relaxed" data-testid="text-team-intro">
-          Biz mühendis, stratejist ve yaratıcıların aynı masada oturduğu bir ekibiz. Her biri farklı bir disiplinden gelse de ortak noktamız aynı: geleceği kodlamak.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
-        {teamMembers.map((member, index) => (
-          <Card 
-            key={index}
-            className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate"
-          >
-            <CardHeader className="flex flex-row items-center gap-4 pb-4">
-              <Avatar className="w-16 h-16 bg-primary/10 border-2 border-primary/20">
-                <AvatarFallback className="bg-primary/10 text-primary text-lg font-medium">
-                  {member.initials}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex-1 space-y-1">
-                <h3 className="text-lg font-semibold text-white" data-testid={`text-team-member-${index}-name`}>
-                  {member.name}
-                </h3>
-                <p className="text-sm text-white/60" data-testid={`text-team-member-${index}-role`}>
-                  {member.role}
-                </p>
-              </div>
-            </CardHeader>
-          </Card>
-        ))}
-      </div>
-
-      {/* Advisors Section */}
-      <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden mt-12">
-        <CardHeader className="space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Users className="text-primary" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold text-white" data-testid="text-advisors-title">
-              Danışmanlar
-            </h3>
-          </div>
-        </CardHeader>
-        <CardContent className="text-white/80 leading-relaxed">
-          <p data-testid="text-advisors-description">
-            Akademi ve endüstri iş birliklerinden gelen teknik ve finansal mentörler.
+      <div className="py-16 space-y-16">
+        <div className="space-y-6 max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
+            Ekibimiz
+          </h1>
+          <p className="text-lg text-white/80 leading-relaxed">
+            Verilabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur. Ünvanlardan çok, üretilen değere ve ortak vizyona önem veririz.
           </p>
-        </CardContent>
-      </Card>
+        </div>
+
+        {/* Core Team */}
+        <div className="space-y-8">
+          <h2 className="text-2xl font-semibold text-white">Çekirdek Ekip</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teamMembers.map((member, index) => (
+              <Card 
+                key={index}
+                className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate p-6 space-y-4"
+              >
+                <div className="flex items-center gap-4">
+                  <Avatar className="w-16 h-16 bg-primary/10 border-2 border-primary/20">
+                    <AvatarFallback className="bg-primary/10 text-primary text-lg font-medium">
+                      {member.initials}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1 space-y-1">
+                    <h3 className="text-lg font-semibold text-white" data-testid={`text-team-member-${index}-name`}>
+                      {member.name}
+                    </h3>
+                    <p className="text-sm text-white/60" data-testid={`text-team-member-${index}-role`}>
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-sm text-white/70 leading-relaxed">
+                  {member.description}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* How We Work & Culture */}
+        <div className="grid md:grid-cols-2 gap-8">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <Workflow className="text-primary" size={28} />
+            </div>
+            <h2 className="text-2xl font-semibold text-white mb-4">Nasıl Çalışıyoruz?</h2>
+            <p className="text-white/70 leading-relaxed">
+              Verilabs ekibi, sabit silolar yerine akışkan takımlar halinde çalışır. Bir projede ürün tasarımı konuşulurken masada hem geliştirici hem veri bilimci hem de iş geliştirme tarafı bulunur. Bu sayede kararlar, tek bir perspektife sıkışmadan alınır. Teknik uygulanabilirlik, kullanıcı deneyimi ve iş modeli aynı anda tartılır.
+            </p>
+          </Card>
+
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <Users className="text-primary" size={28} />
+            </div>
+            <h2 className="text-2xl font-semibold text-white mb-4">Kültürümüz</h2>
+            <ul className="text-white/70 leading-relaxed space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Hiyerarşi yerine sorumluluk alanları</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Uzun toplantılar yerine net gündemli oturumlar</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Kod kalitesi kadar problem kalitesine de önem verme</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Sürekli öğrenme ve paylaşım kültürü</span>
+              </li>
+            </ul>
+          </Card>
+        </div>
+
+        {/* What We Value */}
+        <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/10 backdrop-blur-sm p-8 md:p-12 space-y-6">
+          <div className="flex items-start gap-4">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Award className="text-primary" size={28} />
+            </div>
+            <div className="flex-1 space-y-4">
+              <h2 className="text-3xl font-bold text-white">Neyi Önemsiyoruz?</h2>
+              <p className="text-white/70 leading-relaxed">
+                Verilabs'ta güçlü CV'lerden çok, güçlü katkılar önemlidir. Bir ekip üyesinden beklediğimiz şey; merak duygusunu kaybetmemesi, veriye ve geribildirime açık olması ve "bu iş daha iyi nasıl yapılır" sorusunu her gün yeniden sormasıdır. Hatalarımızı saklamayız; onları öğrenme araçlarına dönüştürmeye çalışırız.
+              </p>
+              <p className="text-white/70 leading-relaxed">
+                Ekibimiz büyürken dikkat ettiğimiz en kritik nokta, kültürel uyumdur. Her yeni yetenek, sadece teknik beceri getirmez; aynı zamanda o kültürü şekillendiren bir aktör haline gelir. Bu nedenle ekip genişlerken değerlerimizden taviz vermemeye özen gösteririz.
+              </p>
+            </div>
+          </div>
+        </Card>
       </div>
     </>
   );

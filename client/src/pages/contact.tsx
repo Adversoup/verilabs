@@ -57,13 +57,40 @@ export default function Contact() {
       <div className="py-16">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight" data-testid="text-page-title">
+            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
               İletişim
             </h1>
             <p className="text-lg text-white/80 leading-relaxed" data-testid="text-contact-intro">
-              Bir fikriniz, yatırımınız veya iş birliği teklifiniz mi var? Bizimle konuşun.
+              Bir fikriniz, yatırım düşünceniz, iş birliği teklifiniz ya da sadece merak ettiğiniz bir soru mu var? Verilabs ile iletişime geçmek için resmi kanalların ötesinde, samimi bir diyalog alanı açmaya çalışıyoruz. Aşağıdaki form üzerinden bize ulaşabilir, doğrudan e-posta gönderebilir veya sosyal medya hesaplarımız üzerinden bağlantı kurabilirsiniz.
             </p>
           </div>
+
+          {/* Why Contact Us */}
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8">
+            <h2 className="text-xl font-semibold text-white mb-4">Neden Bizimle İletişime Geçebilirsiniz?</h2>
+            <ul className="text-white/70 leading-relaxed space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Verilabs projeleri hakkında daha detaylı bilgi almak için</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Galgo veya ProtoNest ile ilgili iş birliği imkanlarını konuşmak için</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Yeni bir AI projesi fikrini birlikte değerlendirmek için</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Yatırım veya ortaklık modelleri hakkında bilgi alışverişi için</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Ekibimizle tanışmak, kültürümüzü daha yakından görmek için</span>
+              </li>
+            </ul>
+          </Card>
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="md:col-span-2">

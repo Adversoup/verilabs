@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Target, Eye, Zap } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Target, Eye, Lightbulb, Shield, Brain, Heart, TrendingUp } from "lucide-react";
 import SEO from "@/components/SEO";
 
 export default function About() {
@@ -7,79 +7,126 @@ export default function About() {
     <>
       <SEO 
         title="Hakkımızda"
-        description="Verilabs, AI tabanlı projeleri sadece geliştirmekle kalmaz; onları ölçeklenebilir, yatırım çekebilen, bağımsız yapılara dönüştürür."
+        description="Verilabs, yapay zekâ temelli projeleri sadece geliştiren değil, onları iş modeline ve şirketleşme yolculuğuna dönüştüren bir teknoloji stüdyosudur."
         path="/hakkimizda"
       />
-      <div className="py-16 space-y-12">
-      <div className="space-y-6 max-w-4xl">
-        <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight" data-testid="text-page-title">
-          Hakkımızda
-        </h1>
-        <p className="text-lg text-white/80 leading-relaxed" data-testid="text-about-intro">
-          Verilabs, AI tabanlı projeleri sadece geliştirmekle kalmaz; onları ölçeklenebilir, yatırım çekebilen, bağımsız yapılara dönüştürür.
-        </p>
-      </div>
+      <div className="py-16 space-y-16">
+        <div className="max-w-3xl space-y-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
+            Hakkımızda
+          </h1>
+          <p className="text-lg text-white/80 leading-relaxed">
+            Verilabs, yapay zekâ temelli projeleri sadece geliştiren değil, onları iş modeline ve şirketleşme yolculuğuna dönüştüren bir teknoloji stüdyosudur. Amacımız, kısa vadeli "uygulama teslimi" yaklaşımının ötesine geçerek, sürdürülebilir ürünler ve ölçeklenebilir şirketler inşa etmektir.
+          </p>
+        </div>
 
-      <div className="grid md:grid-cols-3 gap-6 pt-8">
-        <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate">
-          <CardHeader className="space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Target className="text-primary" size={24} />
+        {/* Mission, Vision, Approach */}
+        <div className="grid md:grid-cols-3 gap-8">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <Target className="text-primary" size={28} />
             </div>
-            <h3 className="text-xl font-semibold text-white" data-testid="text-mission-title">
-              Misyon
-            </h3>
-          </CardHeader>
-          <CardContent className="text-white/80 leading-relaxed">
-            <p data-testid="text-mission-description">
-              Akıllı sistemlerle, gerçek dünya problemlerine kalıcı teknoloji çözümleri üretmek.
+            <h2 className="text-2xl font-semibold text-white mb-4" data-testid="text-mission-title">Misyonumuz</h2>
+            <p className="text-white/70 leading-relaxed" data-testid="text-mission-description">
+              Misyonumuz, karmaşık problemleri sade, uygulanabilir ve ölçülebilir çözümlere dönüştürmektir. Bunu yaparken yapay zekâyı merkezde konumlandırır, veriyle beslenen, öğrenen ve kendi kendini geliştirebilen sistemler tasarlarız. Her projede gerçek bir problemi adreslemeye, net bir değer önermesi tanımlamaya ve kullanıcıların hayatında ölçülebilir bir fark yaratmaya odaklanırız.
             </p>
-          </CardContent>
-        </Card>
+          </Card>
 
-        <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate">
-          <CardHeader className="space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Eye className="text-primary" size={24} />
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <Eye className="text-primary" size={28} />
             </div>
-            <h3 className="text-xl font-semibold text-white" data-testid="text-vision-title">
-              Vizyon
-            </h3>
-          </CardHeader>
-          <CardContent className="text-white/80 leading-relaxed">
-            <p data-testid="text-vision-description">
-              AI ekosisteminde Türkiye çıkışlı global bir teknoloji üreticisi olmak.
+            <h2 className="text-2xl font-semibold text-white mb-4" data-testid="text-vision-title">Vizyonumuz</h2>
+            <p className="text-white/70 leading-relaxed" data-testid="text-vision-description">
+              Vizyonumuz, Türkiye çıkışlı ama global ölçekte etkili bir AI venture studio olmaktır. Geliştirdiğimiz her ürün, ilk günden itibaren sadece yerel pazarı değil, uluslararası ölçekte genişleyebilecek bir yapıyı hedefler. Bu yüzden teknik mimariden marka kurgusuna, lisanslama modellerinden entegrasyon stratejilerine kadar her kararı küresel ölçeklenebilirlik perspektifiyle ele alıyoruz.
             </p>
-          </CardContent>
-        </Card>
+          </Card>
 
-        <Card className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate">
-          <CardHeader className="space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Zap className="text-primary" size={24} />
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <Lightbulb className="text-primary" size={28} />
             </div>
-            <h3 className="text-xl font-semibold text-white" data-testid="text-approach-title">
-              Yaklaşım
-            </h3>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2 text-white/80">
+            <h2 className="text-2xl font-semibold text-white mb-4" data-testid="text-approach-title">Yaklaşımımız</h2>
+            <ul className="text-white/70 leading-relaxed space-y-3">
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-1">•</span>
-                <span data-testid="text-approach-1">AI & Data temelli inovasyon</span>
+                <span data-testid="text-approach-1">Fikirden ürüne, üründen şirkete giden yolu birlikte tasarlamak</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-1">•</span>
-                <span data-testid="text-approach-2">Hızlı prototipleme ve doğrulama</span>
+                <span data-testid="text-approach-2">Veri ve kullanıcı geri bildirimi ile karar almak</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-1">•</span>
-                <span data-testid="text-approach-3">Stratejik exit ve ölçekleme</span>
+                <span data-testid="text-approach-3">Hızlı prototipleme ve tekrar tekrar doğrulama</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary mt-1">•</span>
+                <span>Yatırım ve exit potansiyelini en başta kurgulamak</span>
               </li>
             </ul>
-          </CardContent>
-        </Card>
-      </div>
+          </Card>
+        </div>
+
+        {/* Values */}
+        <div className="space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Değerlerimiz</h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Verilabs'ı şekillendiren temel prensipler
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Shield className="text-primary" size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-white mt-2">Dürüstlük ve Şeffaflık</h3>
+              </div>
+              <p className="text-white/70 leading-relaxed">
+                Verilabs'ta metrikler süslenmez, problemlerse saklanmaz. Bir proje beklenen hızda ilerlemiyorsa bunu açıkça masaya koyar, gerekli pivot kararlarını veriye bakarak alırız. Bu şeffaflık, hem zekice inşa edilmiş ürünler hem de güvenilir iş ilişkileri kurmamızı sağlar.
+              </p>
+            </Card>
+
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Brain className="text-primary" size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-white mt-2">Bilimsel Düşünce</h3>
+              </div>
+              <p className="text-white/70 leading-relaxed">
+                Varsayımlarımızı test eder, hipotezlerimizi deneyle doğrularız. Kullanıcı davranışlarını anlamak için sezgiye değil, verilere bakarız. "Bu böyle yapılır" klişesini kabul etmeyip, her alanda daha iyisini mümkün kılan senaryoları keşfetmeye çalışırız.
+              </p>
+            </Card>
+
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="text-primary" size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-white mt-2">Öğrenme İştahı</h3>
+              </div>
+              <p className="text-white/70 leading-relaxed">
+                Her yeni proje, önceki deneyimlerimizin üzerine inşa edilen bir öğrenme katmanıdır. Kullandığımız teknolojiler, kurduğumuz mimariler, seçtiğimiz iş ortakları ve benimsediğimiz modeller zamanla rafine edilir. Verilabs için "yeterince iyi" diye bir seviye yoktur; daha iyisi için yer her zaman vardır.
+              </p>
+            </Card>
+
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm p-8 hover-elevate">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Heart className="text-primary" size={24} />
+                </div>
+                <h3 className="text-xl font-semibold text-white mt-2">İnsan Merkezlilik</h3>
+              </div>
+              <p className="text-white/70 leading-relaxed">
+                Yapay zekâdan bahsediyor olmamız, odağımızın insan olmadığı anlamına gelmez. Tersine, tüm sistemleri insan davranışını, ihtiyaçlarını ve sınırlılıklarını daha iyi anlamak için kullanırız. Ürünlerimizi, insanların günlük kararlarını daha kolay, daha bilinçli ve daha verimli hale getirmek için tasarlarız.
+              </p>
+            </Card>
+          </div>
+        </div>
       </div>
     </>
   );
