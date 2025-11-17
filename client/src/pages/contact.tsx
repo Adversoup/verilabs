@@ -11,7 +11,7 @@ import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 import SEO from "@/components/SEO";
-import bgImage from "@assets/16367380_rm380-09_1763392046993.jpg";
+import bgImage from "@assets/143788494_4d4d08ff-43f6-40ed-a04f-9a2f7091ebd4_1763392609882.jpg";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -57,7 +57,7 @@ export default function Contact() {
       />
       <div className="relative py-16">
         <div 
-          className="absolute inset-0 w-full h-full opacity-50 pointer-events-none"
+          className="absolute inset-0 w-full h-full opacity-20 pointer-events-none z-0"
           style={{
             backgroundImage: `url(${bgImage})`,
             backgroundSize: 'cover',
