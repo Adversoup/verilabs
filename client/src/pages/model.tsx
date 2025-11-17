@@ -39,7 +39,7 @@ export default function Model() {
   return (
     <>
       <SEO 
-        title="Venture Studio Modeli"
+        title="Venture Studio"
         description="Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder."
         path="/model"
       />
