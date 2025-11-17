@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 const navigation = [
-  { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/model", label: "Venture Studio" },
   { href: "/projeler", label: "Projeler" },
