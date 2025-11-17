@@ -1,21 +1,31 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Home } from "lucide-react";
+import SEO from "@/components/SEO";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">404 Page Not Found</h1>
-          </div>
-
-          <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+    <>
+      <SEO 
+        title="Sayfa Bulunamadı"
+        description="Aradığınız sayfa mevcut değil veya taşınmış olabilir."
+        path="/404"
+      />
+      <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
+        <div className="text-center space-y-6">
+          <h1 className="text-6xl font-bold text-white" data-testid="text-error-code">404</h1>
+          <h2 className="text-2xl font-semibold text-white" data-testid="text-error-title">Sayfa Bulunamadı</h2>
+          <p className="text-white/70 max-w-md" data-testid="text-error-message">
+            Aradığınız sayfa mevcut değil veya taşınmış olabilir.
           </p>
-        </CardContent>
-      </Card>
-    </div>
+          <Link href="/">
+            <Button size="lg" className="mt-4 gap-2" data-testid="button-home">
+              <Home size={20} />
+              Ana Sayfaya Dön
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </>
   );
 }
