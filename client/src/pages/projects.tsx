@@ -9,7 +9,7 @@ export default function Projects() {
     <>
       <SEO 
         title="Projeler"
-        description="Verilabs'in AI destekli projeleri: Galgo finansal içgörü platformu ve ProtoNest üretim optimizasyonu. Fikirden ürüne, üründen şirkete."
+        description="VeriLabs'in AI destekli projeleri: Galgo finansal içgörü platformu ve ProtoNest üretim optimizasyonu. Fikirden ürüne, üründen şirkete."
         path="/projeler"
       />
       <div className="relative min-h-screen py-16 space-y-16">
@@ -27,7 +27,7 @@ export default function Projects() {
             Projelerimiz
           </h1>
           <p className="text-lg text-white/80 leading-relaxed">
-            Verilabs çatısı altında şu anda iki çekirdek proje geliştiriyoruz: finansal içgörü motoru <strong>Galgo</strong> ve üretim zekâsı platformu <strong>ProtoNest</strong>. Her ikisi de yapay zekâyı iş akışlarının merkezine yerleştiriyor; biri yatırımcıların karar süreçlerini, diğeri üreticilerin verimlilik dengesini yeniden tanımlıyor.
+            VeriLabs çatısı altında şu anda iki çekirdek proje geliştiriyoruz: finansal içgörü motoru <strong>Galgo</strong> ve üretim zekâsı platformu <strong>ProtoNest</strong>. Her ikisi de yapay zekâyı iş akışlarının merkezine yerleştiriyor; biri yatırımcıların karar süreçlerini, diğeri üreticilerin verimlilik dengesini yeniden tanımlıyor.
           </p>
         </div>
 

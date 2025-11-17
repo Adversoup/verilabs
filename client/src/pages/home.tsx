@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="Verilabs – AI Venture Studio"
-        description="Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir."
+        title="VeriLabs – AI Venture Studio"
+        description="VeriLabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir."
         path="/"
       />
       {/* Hero Section with Video Background - Full Width */}
@@ -46,7 +46,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg" data-testid="text-hero-description">
-              Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir. Sadece yazılım üreten bir ekip değiliz; geleceğin iş modellerini inşa eden bir venture studio'yuz.
+              VeriLabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir. Sadece yazılım üreten bir ekip değiliz; geleceğin iş modellerini inşa eden bir venture studio'yuz.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
@@ -84,7 +84,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Ne Yapıyoruz?</h3>
                 <p className="text-white/70 leading-relaxed">
-                  Verilabs, fikir aşamasındaki konseptleri veriye dayalı analizlerle değerlendirir, hızlı prototipleme teknikleriyle hayata geçirir ve ölçeklenebilir ürünlere dönüştürür. Her proje, baştan itibaren bir şirket adayı olarak tasarlanır; altyapısı, mimarisi ve iş modeli buna göre kurgulanır.
+                  VeriLabs, fikir aşamasındaki konseptleri veriye dayalı analizlerle değerlendirir, hızlı prototipleme teknikleriyle hayata geçirir ve ölçeklenebilir ürünlere dönüştürür. Her proje, baştan itibaren bir şirket adayı olarak tasarlanır; altyapısı, mimarisi ve iş modeli buna göre kurgulanır.
                 </p>
               </Card>
 
@@ -94,7 +94,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Neden AI Merkezde?</h3>
                 <p className="text-white/70 leading-relaxed">
-                  Yapay zekâ, bugün sadece bir ek özellik değil; iş modellerini yeniden tanımlayan temel bir katman. Verilabs'ta süreçlerimizi, kullanıcı deneyimini ve karar mekanizmalarını AI destekli tasarlıyoruz. Böylece her ürün, piyasaya çıktığı gün itibarıyla veriyle beslenebilen, öğrenen ve gelişen yaşayan bir organizma haline geliyor.
+                  Yapay zekâ, bugün sadece bir ek özellik değil; iş modellerini yeniden tanımlayan temel bir katman. VeriLabs'ta süreçlerimizi, kullanıcı deneyimini ve karar mekanizmalarını AI destekli tasarlıyoruz. Böylece her ürün, piyasaya çıktığı gün itibarıyla veriyle beslenebilen, öğrenen ve gelişen yaşayan bir organizma haline geliyor.
                 </p>
               </Card>
 
@@ -184,10 +184,10 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Neden Verilabs */}
+          {/* Neden VeriLabs */}
           <section className="space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">Neden Verilabs?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">Neden VeriLabs?</h2>
               <p className="text-white/70 max-w-2xl mx-auto">
                 Venture studio modeliyle teknoloji projelerini en hızlı şekilde ölçeklendiriyoruz
               </p>

@@ -10,7 +10,7 @@ interface SEOProps {
 export default function SEO({ title, description, path = "/", image }: SEOProps) {
   const siteUrl = "https://verilabs.ai";
   const fullUrl = `${siteUrl}${path}`;
-  const fullTitle = title === "Verilabs – AI Venture Studio" ? title : `${title} | Verilabs`;
+  const fullTitle = title === "VeriLabs – AI Venture Studio" ? title : `${title} | VeriLabs`;
   const ogImage = image || `${siteUrl}/og-image.png`;
 
   return (
@@ -23,7 +23,7 @@ export default function SEO({ title, description, path = "/", image }: SEOProps)
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Verilabs" />
+      <meta property="og:site_name" content="VeriLabs" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />

@@ -25,7 +25,7 @@ export default function Press() {
     <>
       <SEO 
         title="Basın & Güncellemeler"
-        description="Yeni projeler, lansmanlar ve exit haberleri. Verilabs'in büyüme hikayesi burada."
+        description="Yeni projeler, lansmanlar ve exit haberleri. VeriLabs'in büyüme hikayesi burada."
         path="/basin"
       />
       <div className="py-16 space-y-12">
@@ -34,7 +34,7 @@ export default function Press() {
           Basın & Güncellemeler
         </h1>
         <p className="text-lg text-white/80 leading-relaxed" data-testid="text-press-intro">
-          Yeni projeler, lansmanlar ve exit haberleri. Verilabs'in büyüme hikayesi burada.
+          Yeni projeler, lansmanlar ve exit haberleri. VeriLabs'in büyüme hikayesi burada.
         </p>
       </div>
 

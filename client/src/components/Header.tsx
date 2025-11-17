@@ -21,7 +21,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" data-testid="link-home">
             <span className="text-2xl font-semibold text-white tracking-tight cursor-pointer">
-              Verilabs
+              VeriLabs
             </span>
           </Link>
 

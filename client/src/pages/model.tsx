@@ -59,7 +59,7 @@ export default function Model() {
             Venture Studio
           </h1>
           <p className="text-lg text-white/80 leading-relaxed">
-            Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder. Verilabs, klasik ajans mantığından farklı olarak, her projeyi kendi markasına, kendi yol haritasına ve kendi yatırım hikâyesine sahip bağımsız bir girişim adayı olarak ele alır.
+            Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder. VeriLabs, klasik ajans mantığından farklı olarak, her projeyi kendi markasına, kendi yol haritasına ve kendi yatırım hikâyesine sahip bağımsız bir girişim adayı olarak ele alır.
           </p>
         </div>
 
@@ -79,9 +79,9 @@ export default function Model() {
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Target className="text-primary" size={28} />
             </div>
-            <h2 className="text-2xl font-semibold text-white mb-4">Verilabs Nasıl Konumlanıyor?</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">VeriLabs Nasıl Konumlanıyor?</h2>
             <p className="text-white/70 leading-relaxed">
-              Verilabs, venture studio modelini yapay zekâ ekseninde uygulayan bir yapı olarak konumlanır. Bizim için "ürün", bir kod deposundan ibaret değildir; kullanıcılarına net bir değer sunan, gelir modeli tanımlanmış, ölçeklenmesi planlanmış ve yatırım dosyası kurgulanmış yaşayan bir organizmadır. Bu nedenle ürün geliştirme, iş geliştirme ve teknik mimari aynı masada konuşulur.
+              VeriLabs, venture studio modelini yapay zekâ ekseninde uygulayan bir yapı olarak konumlanır. Bizim için "ürün", bir kod deposundan ibaret değildir; kullanıcılarına net bir değer sunan, gelir modeli tanımlanmış, ölçeklenmesi planlanmış ve yatırım dosyası kurgulanmış yaşayan bir organizmadır. Bu nedenle ürün geliştirme, iş geliştirme ve teknik mimari aynı masada konuşulur.
             </p>
           </Card>
         </div>
@@ -89,7 +89,7 @@ export default function Model() {
         {/* Process */}
         <div className="relative z-10 space-y-8">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Verilabs Venture Süreci</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">VeriLabs Venture Süreci</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
               Fikirden şirkete giden yolculukta izlediğimiz adımlar
             </p>
@@ -130,12 +130,12 @@ export default function Model() {
           <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <h3 className="text-2xl font-semibold text-white mb-4">Neden Önemli?</h3>
             <p className="text-white/70 leading-relaxed">
-              Günümüz dünyasında sadece "iyi bir fikir" yeterli değil. Fikirlerin sistematik olarak test edilmesi, doğru ekiple geliştirilebilmesi ve sürdürülebilir bir iş modeline oturtulması gerekiyor. Venture studio modeli, bu süreci şans ve tesadüften çıkarıp, metot ve disiplin içine yerleştirir. Verilabs, bu disiplinin AI odaklı yorumudur.
+              Günümüz dünyasında sadece "iyi bir fikir" yeterli değil. Fikirlerin sistematik olarak test edilmesi, doğru ekiple geliştirilebilmesi ve sürdürülebilir bir iş modeline oturtulması gerekiyor. Venture studio modeli, bu süreci şans ve tesadüften çıkarıp, metot ve disiplin içine yerleştirir. VeriLabs, bu disiplinin AI odaklı yorumudur.
             </p>
           </Card>
 
           <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <h3 className="text-2xl font-semibold text-white mb-4">Verilabs'in Farkı</h3>
+            <h3 className="text-2xl font-semibold text-white mb-4">VeriLabs'in Farkı</h3>
             <ul className="text-white/70 leading-relaxed space-y-3">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />

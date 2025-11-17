@@ -71,7 +71,7 @@ export default function Contact() {
               İletişim
             </h1>
             <p className="text-lg text-white/80 leading-relaxed" data-testid="text-contact-intro">
-              Bir fikriniz, yatırım düşünceniz, iş birliği teklifiniz ya da sadece merak ettiğiniz bir soru mu var? Verilabs ile iletişime geçmek için resmi kanalların ötesinde, samimi bir diyalog alanı açmaya çalışıyoruz. Aşağıdaki form üzerinden bize ulaşabilir, doğrudan e-posta gönderebilir veya sosyal medya hesaplarımız üzerinden bağlantı kurabilirsiniz.
+              Bir fikriniz, yatırım düşünceniz, iş birliği teklifiniz ya da sadece merak ettiğiniz bir soru mu var? VeriLabs ile iletişime geçmek için resmi kanalların ötesinde, samimi bir diyalog alanı açmaya çalışıyoruz. Aşağıdaki form üzerinden bize ulaşabilir, doğrudan e-posta gönderebilir veya sosyal medya hesaplarımız üzerinden bağlantı kurabilirsiniz.
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default function Contact() {
             <ul className="text-white/70 leading-relaxed space-y-3">
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-1">•</span>
-                <span>Verilabs projeleri hakkında daha detaylı bilgi almak için</span>
+                <span>VeriLabs projeleri hakkında daha detaylı bilgi almak için</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary mt-1">•</span>

@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div className="space-y-3">
-            <h3 className="text-white font-semibold text-base">Verilabs</h3>
+            <h3 className="text-white font-semibold text-base">VeriLabs</h3>
             <p className="text-sm text-white/70 leading-relaxed">
               Yapay zekâ ile işleyen ürünler geliştirir, büyütür ve ölçeklenebilir teknoloji şirketlerine dönüştürür.
             </p>
@@ -100,7 +100,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-center text-xs text-white/60" data-testid="text-copyright">
-            © {new Date().getFullYear()} Verilabs. Tüm hakları saklıdır.
+            © {new Date().getFullYear()} VeriLabs. Tüm hakları saklıdır.
           </p>
         </div>
       </div>

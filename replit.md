@@ -1,8 +1,8 @@
-# Verilabs - AI Venture Studio
+# VeriLabs - AI Venture Studio
 
 ## Overview
 
-Verilabs is a Turkish-language AI venture studio website built with a modern React-based stack. The application showcases the company's venture studio model, projects (Galgo and ProtoNest), team, partnership opportunities, and press updates. It features a dark, sophisticated design inspired by modern tech startups like Linear and Stripe, with a focus on typography and glassmorphism effects.
+VeriLabs is a Turkish-language AI venture studio website built with a modern React-based stack. The application showcases the company's venture studio model, projects (Galgo and ProtoNest), team, partnership opportunities, and press updates. It features a dark, sophisticated design inspired by modern tech startups like Linear and Stripe, with a focus on typography and glassmorphism effects.
 
 The application is a full-stack solution with a React frontend using Vite, an Express backend for API endpoints, and support for PostgreSQL database through Drizzle ORM. The site includes multiple pages describing the venture studio's mission, methodology, projects, team, and contact capabilities.
 

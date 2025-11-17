@@ -13,7 +13,7 @@ const partnershipTypes = [
   {
     icon: Building2,
     title: "Kurumsal İş Birlikleri İçin",
-    description: "Verilabs teknolojilerini kendi markanıza entegre edin."
+    description: "VeriLabs teknolojilerini kendi markanıza entegre edin."
   },
   {
     icon: Users,
@@ -27,7 +27,7 @@ export default function Partner() {
     <>
       <SEO 
         title="Partner Olun"
-        description="Verilabs'in büyüme hikayesinin bir parçası olun. Yatırımcılar, kurumsal partnerler ve deneyimli mentörler ile birlikte geleceği şekillendiriyoruz."
+        description="VeriLabs'in büyüme hikayesinin bir parçası olun. Yatırımcılar, kurumsal partnerler ve deneyimli mentörler ile birlikte geleceği şekillendiriyoruz."
         path="/partner"
       />
       <div className="py-16 space-y-12">
@@ -36,7 +36,7 @@ export default function Partner() {
           Partner Olun
         </h1>
         <p className="text-lg text-white/80 leading-relaxed" data-testid="text-partner-intro">
-          Verilabs'in büyüme hikayesinin bir parçası olun. Yatırımcılar, kurumsal partnerler ve deneyimli mentörler ile birlikte geleceği şekillendiriyoruz.
+          VeriLabs'in büyüme hikayesinin bir parçası olun. Yatırımcılar, kurumsal partnerler ve deneyimli mentörler ile birlikte geleceği şekillendiriyoruz.
         </p>
       </div>
 

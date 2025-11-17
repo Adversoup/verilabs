@@ -9,7 +9,7 @@ const teamMembers = [
     name: "Levent Gözener",
     role: "Founder & Product Architect",
     initials: "LG",
-    description: "Verilabs'in ürün vizyonunu, teknik mimariyle iş modeli arasında köprü kurarak şekillendirir. Farklı sektörlerden edindiği deneyimi, yapay zekâ ve SaaS dünyasına taşır."
+    description: "VeriLabs'in ürün vizyonunu, teknik mimariyle iş modeli arasında köprü kurarak şekillendirir. Farklı sektörlerden edindiği deneyimi, yapay zekâ ve SaaS dünyasına taşır."
   },
   {
     name: "[İsim]",
@@ -42,7 +42,7 @@ export default function Team() {
     <>
       <SEO 
         title="Ekibimiz"
-        description="Verilabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur."
+        description="VeriLabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur."
         path="/ekibimiz"
       />
       <div className="relative min-h-screen py-16 space-y-16">
@@ -60,7 +60,7 @@ export default function Team() {
             Ekibimiz
           </h1>
           <p className="text-lg text-white/80 leading-relaxed">
-            Verilabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur. Ünvanlardan çok, üretilen değere ve ortak vizyona önem veririz.
+            VeriLabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur. Ünvanlardan çok, üretilen değere ve ortak vizyona önem veririz.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function Team() {
             </div>
             <h2 className="text-2xl font-semibold text-white mb-4">Nasıl Çalışıyoruz?</h2>
             <p className="text-white/70 leading-relaxed">
-              Verilabs ekibi, sabit silolar yerine akışkan takımlar halinde çalışır. Bir projede ürün tasarımı konuşulurken masada hem geliştirici hem veri bilimci hem de iş geliştirme tarafı bulunur. Bu sayede kararlar, tek bir perspektife sıkışmadan alınır. Teknik uygulanabilirlik, kullanıcı deneyimi ve iş modeli aynı anda tartılır.
+              VeriLabs ekibi, sabit silolar yerine akışkan takımlar halinde çalışır. Bir projede ürün tasarımı konuşulurken masada hem geliştirici hem veri bilimci hem de iş geliştirme tarafı bulunur. Bu sayede kararlar, tek bir perspektife sıkışmadan alınır. Teknik uygulanabilirlik, kullanıcı deneyimi ve iş modeli aynı anda tartılır.
             </p>
           </Card>
 
@@ -143,7 +143,7 @@ export default function Team() {
             <div className="flex-1 space-y-4">
               <h2 className="text-3xl font-bold text-white">Neyi Önemsiyoruz?</h2>
               <p className="text-white/70 leading-relaxed">
-                Verilabs'ta güçlü CV'lerden çok, güçlü katkılar önemlidir. Bir ekip üyesinden beklediğimiz şey; merak duygusunu kaybetmemesi, veriye ve geribildirime açık olması ve "bu iş daha iyi nasıl yapılır" sorusunu her gün yeniden sormasıdır. Hatalarımızı saklamayız; onları öğrenme araçlarına dönüştürmeye çalışırız.
+                VeriLabs'ta güçlü CV'lerden çok, güçlü katkılar önemlidir. Bir ekip üyesinden beklediğimiz şey; merak duygusunu kaybetmemesi, veriye ve geribildirime açık olması ve "bu iş daha iyi nasıl yapılır" sorusunu her gün yeniden sormasıdır. Hatalarımızı saklamayız; onları öğrenme araçlarına dönüştürmeye çalışırız.
               </p>
               <p className="text-white/70 leading-relaxed">
                 Ekibimiz büyürken dikkat ettiğimiz en kritik nokta, kültürel uyumdur. Her yeni yetenek, sadece teknik beceri getirmez; aynı zamanda o kültürü şekillendiren bir aktör haline gelir. Bu nedenle ekip genişlerken değerlerimizden taviz vermemeye özen gösteririz.

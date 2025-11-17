@@ -1,4 +1,4 @@
-# Verilabs Design Guidelines
+# VeriLabs Design Guidelines
 
 ## Design Approach
 **Reference-Based Approach**: Modern AI/tech startup aesthetic inspired by Linear's clean typography, Stripe's restraint, and contemporary venture studio presentations. Dark, sophisticated interface emphasizing credibility and technological expertise.
