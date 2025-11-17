@@ -11,6 +11,7 @@ import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
 import SEO from "@/components/SEO";
+import bgImage from "@assets/16367380_rm380-09_1763392046993.jpg";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -54,8 +55,17 @@ export default function Contact() {
         description="Bir fikriniz, yatırımınız veya iş birliği teklifiniz mi var? Bizimle konuşun."
         path="/iletisim"
       />
-      <div className="py-16">
-        <div className="max-w-4xl mx-auto space-y-12">
+      <div className="relative py-16">
+        <div 
+          className="absolute inset-0 w-full h-full opacity-50 pointer-events-none"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto space-y-12">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
               İletişim

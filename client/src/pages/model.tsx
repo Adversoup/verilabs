@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Lightbulb, Beaker, TrendingUp, Rocket, Building2, Sparkles, Target, CheckCircle2 } from "lucide-react";
 import SEO from "@/components/SEO";
+import bgImage from "@assets/16367380_rm380-09_1763392046993.jpg";
 
 const phases = [
   {
@@ -43,8 +44,17 @@ export default function Model() {
         description="Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder."
         path="/model"
       />
-      <div className="py-16 space-y-16">
-        <div className="max-w-3xl space-y-6">
+      <div className="relative py-16 space-y-16">
+        <div 
+          className="absolute inset-0 w-full h-full opacity-50 pointer-events-none"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        <div className="relative z-10 max-w-3xl space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
             Venture Studio
           </h1>
@@ -54,7 +64,7 @@ export default function Model() {
         </div>
 
         {/* What is Venture Studio */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="relative z-10 grid md:grid-cols-2 gap-8">
           <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Building2 className="text-primary" size={28} />
@@ -77,7 +87,7 @@ export default function Model() {
         </div>
 
         {/* Process */}
-        <div className="space-y-8">
+        <div className="relative z-10 space-y-8">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Verilabs Venture Süreci</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
@@ -116,7 +126,7 @@ export default function Model() {
         </div>
 
         {/* Why Important & Difference */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="relative z-10 grid md:grid-cols-2 gap-8">
           <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <h3 className="text-2xl font-semibold text-white mb-4">Neden Önemli?</h3>
             <p className="text-white/70 leading-relaxed">

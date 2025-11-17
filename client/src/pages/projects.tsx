@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Factory, CheckCircle2 } from "lucide-react";
 import SEO from "@/components/SEO";
+import bgImage from "@assets/16367380_rm380-09_1763392046993.jpg";
 
 export default function Projects() {
   return (
@@ -11,8 +12,17 @@ export default function Projects() {
         description="Verilabs'in AI destekli projeleri: Galgo finansal içgörü platformu ve ProtoNest üretim optimizasyonu. Fikirden ürüne, üründen şirkete."
         path="/projeler"
       />
-      <div className="py-16 space-y-16">
-        <div className="space-y-6 max-w-3xl">
+      <div className="relative py-16 space-y-16">
+        <div 
+          className="absolute inset-0 w-full h-full opacity-50 pointer-events-none"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        <div className="relative z-10 space-y-6 max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
             Projelerimiz
           </h1>
@@ -22,7 +32,7 @@ export default function Projects() {
         </div>
 
         {/* Galgo */}
-        <article id="galgo" className="scroll-mt-24 space-y-8">
+        <article id="galgo" className="relative z-10 scroll-mt-24 space-y-8">
           <Card className="bg-primary/10 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate">
             <CardContent className="p-8 md:p-12 space-y-8">
               <div className="flex flex-wrap items-start justify-between gap-6">
@@ -107,7 +117,7 @@ export default function Projects() {
         </article>
 
         {/* ProtoNest */}
-        <article id="protonest" className="scroll-mt-24 space-y-8">
+        <article id="protonest" className="relative z-10 scroll-mt-24 space-y-8">
           <Card className="bg-primary/10 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate">
             <CardContent className="p-8 md:p-12 space-y-8">
               <div className="flex flex-wrap items-start justify-between gap-6">

@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Users, Workflow, Award } from "lucide-react";
 import SEO from "@/components/SEO";
+import bgImage from "@assets/16367380_rm380-09_1763392046993.jpg";
 
 const teamMembers = [
   {
@@ -44,8 +45,17 @@ export default function Team() {
         description="Verilabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur."
         path="/ekibimiz"
       />
-      <div className="py-16 space-y-16">
-        <div className="space-y-6 max-w-3xl">
+      <div className="relative py-16 space-y-16">
+        <div 
+          className="absolute inset-0 w-full h-full opacity-50 pointer-events-none"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        <div className="relative z-10 space-y-6 max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
             Ekibimiz
           </h1>
@@ -55,7 +65,7 @@ export default function Team() {
         </div>
 
         {/* Core Team */}
-        <div className="space-y-8">
+        <div className="relative z-10 space-y-8">
           <h2 className="text-2xl font-semibold text-white">Çekirdek Ekip</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {teamMembers.map((member, index) => (
@@ -87,7 +97,7 @@ export default function Team() {
         </div>
 
         {/* How We Work & Culture */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="relative z-10 grid md:grid-cols-2 gap-8">
           <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
               <Workflow className="text-primary" size={28} />
@@ -125,7 +135,7 @@ export default function Team() {
         </div>
 
         {/* What We Value */}
-        <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/10 backdrop-blur-sm p-8 md:p-12 space-y-6">
+        <Card className="relative z-10 bg-primary/10 border-primary/30 backdrop-blur-sm p-8 md:p-12 space-y-6">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
               <Award className="text-primary" size={28} />
