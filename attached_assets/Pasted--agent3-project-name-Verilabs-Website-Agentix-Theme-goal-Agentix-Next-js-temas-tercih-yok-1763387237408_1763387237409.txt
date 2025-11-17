@@ -1,0 +1,460 @@
+<agent3>
+  <project name="Verilabs Website (Agentix Theme)" goal="Agentix Next.js teması tercih; yoksa Next.js+Tailwind kur. Galgo ve ProtoNest odaklı, venture studio modeli, ekip, partner, basın ve iletişim sayfaları. Türkçe içerik, modern ve hızlı.">
+    <stack>
+      <frontend>Next.js (App Router tercih), TypeScript</frontend>
+      <style>Tailwind CSS</style>
+      <icons>Lucide</icons>
+      <seo>metadata API + Open Graph + next-sitemap</seo>
+      <quality>ESLint + Prettier</quality>
+    </stack>
+
+    <requirements>
+      <item>Önce proje kökünde agentix-nextjs.zip var mı kontrol et; varsa temayı kullan.</item>
+      <item>Yoksa fallback: create-next-app --ts --tailwind --app</item>
+      <item>Sayfalar: / (Ana), /hakkimizda, /model, /projeler, /ekibimiz, /partner, /basin, /iletisim</item>
+      <item>İçerikler Türkçe ve aşağıda verilen kopyalarla birebir doldurulacak.</item>
+      <item>Mobil-öncelikli, Lighthouse 90+ hedefi.</item>
+      <item>robots.txt + sitemap.xml üret.</item>
+    </requirements>
+
+    <commands>
+      <!-- 1) Çalışma dizini -->
+      <run>mkdir -p verilabs</run>
+
+      <!-- 2) Temayı dene: zip var mı? -->
+      <run>if [ -f agentix-nextjs.zip ]; then unzip -q agentix-nextjs.zip -d verilabs; elif [ -f /home/runner/agentix-nextjs.zip ]; then unzip -q /home/runner/agentix-nextjs.zip -d verilabs; elif [ -f ../agentix-nextjs.zip ]; then unzip -q ../agentix-nextjs.zip -d verilabs; fi</run>
+
+      <!-- 3) Eğer tema yoksa scaffold -->
+      <run>if [ -z "$(ls -A verilabs)" ]; then npx create-next-app@latest verilabs --typescript --eslint --tailwind --src-dir --app --import-alias "@/*"; fi</run>
+
+      <chdir>verilabs</chdir>
+
+      <!-- 4) Bağımlılıklar -->
+      <run>npm i lucide-react clsx next-sitemap</run>
+      <run>npm i -D prettier prettier-plugin-tailwindcss</run>
+    </commands>
+
+    <files>
+      <!-- Layout (tema varsa uyumlu; yoksa oluşturur) -->
+      <file path="src/components/Header.tsx"><![CDATA[
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+
+const nav = [
+  { href: "/", label: "Ana Sayfa" },
+  { href: "/hakkimizda", label: "Hakkımızda" },
+  { href: "/model", label: "Venture Studio Modeli" },
+  { href: "/projeler", label: "Projeler" },
+  { href: "/ekibimiz", label: "Ekibimiz" },
+  { href: "/partner", label: "Partner Olun" },
+  { href: "/basin", label: "Basın & Güncellemeler" },
+  { href: "/iletisim", label: "İletişim" }
+];
+
+export default function Header() {
+  const pathname = usePathname();
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B0F1A]/80 backdrop-blur">
+      <div className="mx-auto max-w-7xl px-4 flex h-16 items-center justify-between">
+        <Link href="/" className="font-semibold text-white text-lg">Verilabs</Link>
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          {nav.map((i) => (
+            <Link
+              key={i.href}
+              href={i.href}
+              className={clsx(
+                "text-white/80 hover:text-white transition",
+                pathname === i.href && "text-white"
+              )}
+            >
+              {i.label}
+            </Link>
+          ))}
+        </nav>
+        <Link href="/partner" className="inline-flex items-center rounded-xl px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-500">Partner Olun</Link>
+      </div>
+    </header>
+  );
+}
+      ]]></file>
+
+      <file path="src/components/Footer.tsx"><![CDATA[
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="mt-24 border-t border-white/10">
+      <div className="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-4 gap-8 text-sm text-white/80">
+        <div>
+          <h3 className="text-white font-semibold mb-3">Verilabs</h3>
+          <p>Yapay zekâ ile işleyen ürünler geliştirir, büyütür ve ölçeklenebilir teknoloji şirketlerine dönüştürür.</p>
+        </div>
+        <div>
+          <h4 className="text-white font-medium mb-2">Sayfalar</h4>
+          <ul className="space-y-1">
+            <li><Link href="/hakkimizda">Hakkımızda</Link></li>
+            <li><Link href="/model">Venture Studio Modeli</Link></li>
+            <li><Link href="/projeler">Projeler</Link></li>
+            <li><Link href="/ekibimiz">Ekibimiz</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-white font-medium mb-2">Kaynaklar</h4>
+          <ul className="space-y-1">
+            <li><Link href="/basin">Basın &amp; Güncellemeler</Link></li>
+            <li><a href="https://www.linkedin.com/company/verilabs" target="_blank">LinkedIn</a></li>
+            <li><a href="https://x.com/verilabs_ai" target="_blank">X (Twitter)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-white font-medium mb-2">İletişim</h4>
+          <ul className="space-y-1">
+            <li>info@verilabs.ai</li>
+            <li>İstanbul, Türkiye</li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-white/10 py-6 text-center text-xs text-white/60">
+        © {new Date().getFullYear()} Verilabs. Tüm hakları saklıdır.
+      </div>
+    </footer>
+  );
+}
+      ]]></file>
+
+      <file path="src/app/layout.tsx" replace="true"><![CDATA[
+import type { Metadata } from "next";
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://verilabs.ai"),
+  title: "Verilabs – AI Venture Studio",
+  description: "Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir.",
+  openGraph: {
+    title: "Verilabs – AI Venture Studio",
+    description: "Fikirden ürüne, üründen şirkete.",
+    url: "https://verilabs.ai",
+    siteName: "Verilabs",
+    images: [{ url: "/og.png", width: 1200, height: 630 }]
+  },
+  twitter: { card: "summary_large_image", site: "@verilabs_ai", creator: "@verilabs_ai" }
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="tr">
+      <body className="bg-gradient-to-b from-[#0B0F1A] to-[#0E1220] text-[#E5E7EB]">
+        <Header />
+        <main className="mx-auto max-w-7xl px-4">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
+      ]]></file>
+
+      <!-- globals.css: tema varsa ekle, yoksa oluştur -->
+      <file path="src/app/globals.css"><![CDATA[
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container { @apply mx-auto px-4 max-w-7xl; }
+.btn-primary { @apply inline-flex items-center gap-2 rounded-xl px-5 py-3 bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition; }
+.btn-ghost { @apply inline-flex items-center gap-2 rounded-xl px-5 py-3 border border-white/10 hover:bg-white/5 transition; }
+.card { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6; }
+h1,h2,h3 { @apply tracking-tight; }
+      ]]></file>
+
+      <!-- Ana Sayfa -->
+      <file path="src/app/page.tsx" replace="true"><![CDATA[
+import Link from "next/link";
+
+export default function Page() {
+  return (
+    <section className="py-16">
+      <div className="text-center max-w-3xl mx-auto">
+        <h1 className="text-4xl sm:text-6xl font-semibold">AI Venture Studio</h1>
+        <p className="mt-6 text-lg text-white/80">
+          Verilabs, yapay zekâ ve ileri teknoloji alanında ölçeklenebilir projeler geliştirir, büyütür ve global çıkışlara hazır hale getirir.
+        </p>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <Link href="/projeler" className="btn-primary">Projelerimizi Keşfet</Link>
+          <Link href="/partner" className="btn-ghost">Partner Olun</Link>
+        </div>
+      </div>
+
+      <div className="mt-16 grid md:grid-cols-2 gap-6">
+        <div className="card">
+          <h3 className="text-2xl font-semibold mb-2">Galgo</h3>
+          <p className="text-white/80">AI destekli finansal içgörü ve yatırım optimizasyon platformu. Yatırımcıların dağınık veri kaynaklarıyla boğuşmadan, yapay zekâ ile kişiselleştirilmiş finansal stratejiler geliştirmesini sağlar.</p>
+          <div className="mt-4"><Link href="/projeler#galgo" className="btn-ghost">Galgo’yu İncele</Link></div>
+        </div>
+        <div className="card">
+          <h3 className="text-2xl font-semibold mb-2">ProtoNest</h3>
+          <p className="text-white/80">AI destekli üretim optimizasyonu: 2D-3D çizim analizi, CAD tabanlı otomatik nesting ve maliyet simülasyonlarıyla KOBİ’lerde verimlilik artışı.</p>
+          <div className="mt-4"><Link href="/projeler#protonest" className="btn-ghost">ProtoNest’i İncele</Link></div>
+        </div>
+      </div>
+
+      <div className="mt-16 grid sm:grid-cols-3 gap-4 text-center">
+        <div className="card"><div className="text-4xl font-bold">3</div><div className="text-white/70 mt-1">Aktif proje</div></div>
+        <div className="card"><div className="text-4xl font-bold">2</div><div className="text-white/70 mt-1">Exit</div></div>
+        <div className="card"><div className="text-4xl font-bold">1</div><div className="text-white/70 mt-1">Global lansman</div></div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- Hakkımızda -->
+      <file path="src/app/hakkimizda/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-8">
+      <h1 className="text-4xl font-semibold">Hakkımızda</h1>
+      <p>Verilabs, AI tabanlı projeleri sadece geliştirmekle kalmaz; onları ölçeklenebilir, yatırım çekebilen, bağımsız yapılara dönüştürür.</p>
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="card">
+          <h3 className="text-xl font-semibold mb-2">Misyon</h3>
+          <p>Akıllı sistemlerle, gerçek dünya problemlerine kalıcı teknoloji çözümleri üretmek.</p>
+        </div>
+        <div className="card">
+          <h3 className="text-xl font-semibold mb-2">Vizyon</h3>
+          <p>AI ekosisteminde Türkiye çıkışlı global bir teknoloji üreticisi olmak.</p>
+        </div>
+        <div className="card">
+          <h3 className="text-xl font-semibold mb-2">Yaklaşım</h3>
+          <ul className="list-disc list-inside text-white/80">
+            <li>AI &amp; Data temelli inovasyon</li>
+            <li>Hızlı prototipleme ve doğrulama</li>
+            <li>Stratejik exit ve ölçekleme</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- Venture Studio Modeli -->
+      <file path="src/app/model/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-8">
+      <h1 className="text-4xl font-semibold">Venture Studio Modelimiz</h1>
+      <p>Verilabs klasik bir ajans ya da yazılım evi değildir. Biz, yapay zekâ ve veri tabanlı projeleri sıfırdan inşa eden bir venture studio’yuz.</p>
+      <ol className="grid md:grid-cols-2 gap-6 list-decimal list-inside">
+        <li className="card">
+          <h3 className="text-xl font-semibold mb-2">Ideation</h3>
+          <p>Gerçek bir problemi AI perspektifinden yeniden tanımlarız.</p>
+        </li>
+        <li className="card">
+          <h3 className="text-xl font-semibold mb-2">MVP &amp; Validation</h3>
+          <p>Prototip oluşturur, hızlı pazar doğrulaması yaparız.</p>
+        </li>
+        <li className="card">
+          <h3 className="text-xl font-semibold mb-2">Scaling</h3>
+          <p>Teknik ekip ve pazar büyütme aşamasını birlikte yürütürüz.</p>
+        </li>
+        <li className="card">
+          <h3 className="text-xl font-semibold mb-2">Spin-off / Exit</h3>
+          <p>Olgunlaşan projeleri bağımsız marka haline getirir ya da yatırım alacak seviyeye taşırız.</p>
+        </li>
+      </ol>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- Projeler -->
+      <file path="src/app/projeler/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-12">
+      <h1 className="text-4xl font-semibold">Projelerimiz</h1>
+
+      <div id="galgo" className="card">
+        <h2 className="text-2xl font-semibold mb-2">Galgo – AI Destekli Finansal İçgörü Platformu</h2>
+        <p className="text-white/80">Yatırımcıların dağınık veri kaynaklarıyla boğuşmadan, yapay zekâ ile kişiselleştirilmiş finansal stratejiler geliştirmesini sağlar.</p>
+        <p className="mt-3 text-white/70"><strong>Durum:</strong> Beta test aşamasında.</p>
+        <a className="btn-ghost mt-4 inline-flex" href="#">Erken Erişim Talebi Gönder</a>
+      </div>
+
+      <div id="protonest" className="card">
+        <h2 className="text-2xl font-semibold mb-2">ProtoNest – AI Destekli Üretim Optimizasyonu</h2>
+        <p className="text-white/80">KOBİ’lerin malzeme kullanımında israfı azaltarak üretim verimliliğini artırmalarını sağlar.</p>
+        <div className="mt-3 grid sm:grid-cols-3 gap-3">
+          <div className="card"><strong>Teknoloji</strong><p className="text-white/80 mt-1">2D-3D çizim analizi, CAD tabanlı otomatik nesting, maliyet sim.</p></div>
+          <div className="card"><strong>Değer Önerisi</strong><p className="text-white/80 mt-1">%15–20 malzeme tasarrufu</p></div>
+          <div className="card"><strong>Durum</strong><p className="text-white/80 mt-1">MVP tamamlandı, yatırım öncesi faz</p></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- Ekibimiz -->
+      <file path="src/app/ekibimiz/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-8">
+      <h1 className="text-4xl font-semibold">Ekibimiz</h1>
+      <p>Biz mühendis, stratejist ve yaratıcıların aynı masada oturduğu bir ekibiz. Her biri farklı bir disiplinden gelse de ortak noktamız aynı: geleceği kodlamak.</p>
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="card">
+          <h3 className="text-xl font-semibold">Levent Gözener</h3>
+          <p className="text-white/80">Founder &amp; Product Architect</p>
+        </div>
+        <div className="card"><h3 className="text-xl font-semibold">[isim]</h3><p className="text-white/80">AI Engineer</p></div>
+        <div className="card"><h3 className="text-xl font-semibold">[isim]</h3><p className="text-white/80">Frontend Developer</p></div>
+        <div className="card"><h3 className="text-xl font-semibold">[isim]</h3><p className="text-white/80">Data Scientist</p></div>
+        <div className="card"><h3 className="text-xl font-semibold">[isim]</h3><p className="text-white/80">Growth &amp; Partnerships</p></div>
+      </div>
+      <div className="card">
+        <h3 className="text-xl font-semibold mb-2">Danışmanlar</h3>
+        <p className="text-white/80">Akademi ve endüstri iş birliklerinden gelen teknik ve finansal mentörler.</p>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- Partner -->
+      <file path="src/app/partner/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-8">
+      <h1 className="text-4xl font-semibold">Partner Olun</h1>
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="card">
+          <h3 className="text-xl font-semibold mb-2">Yatırımcılar İçin</h3>
+          <p>Yeni nesil AI projelerine erken aşamada dahil olun.</p>
+        </div>
+        <div className="card">
+          <h3 className="text-xl font-semibold mb-2">Kurumsal İş Birlikleri İçin</h3>
+          <p>Verilabs teknolojilerini kendi markanıza entegre edin.</p>
+        </div>
+        <div className="card">
+          <h3 className="text-xl font-semibold mb-2">Mentörler &amp; Danışmanlar</h3>
+          <p>Deneyimimizi paylaşın, birlikte üretelim.</p>
+        </div>
+      </div>
+      <a className="inline-flex items-center rounded-xl px-5 py-3 bg-indigo-600 text-white hover:bg-indigo-500" href="/iletisim">Bizimle İletişime Geçin</a>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- Basın -->
+      <file path="src/app/basin/page.tsx"><![CDATA[
+export default function Page() {
+  return (
+    <section className="py-16 space-y-8">
+      <h1 className="text-4xl font-semibold">Basın &amp; Güncellemeler</h1>
+      <p>Yeni projeler, lansmanlar ve exit haberleri. Verilabs’in büyüme hikayesi burada.</p>
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="card"><h3 className="text-lg font-semibold">Lansman Duyuruları</h3><p className="text-white/80">Yakında.</p></div>
+        <div className="card"><h3 className="text-lg font-semibold">Medya Haberleri</h3><p className="text-white/80">Yakında.</p></div>
+        <div className="card"><h3 className="text-lg font-semibold">Blog / Lab Notları</h3><p className="text-white/80">Yakında.</p></div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <!-- İletişim + API -->
+      <file path="src/app/iletisim/page.tsx"><![CDATA[
+"use client";
+import { useState } from "react";
+
+export default function Page() {
+  const [state, setState] = useState<"idle"|"loading"|"ok"|"err">("idle");
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setState("loading");
+    const form = new FormData(e.currentTarget);
+    const res = await fetch("/api/contact", { method: "POST", body: form });
+    setState(res.ok ? "ok" : "err");
+  }
+
+  return (
+    <section className="py-16 max-w-2xl mx-auto">
+      <h1 className="text-4xl font-semibold mb-6">İletişim</h1>
+      <p className="text-white/80 mb-8">Bir fikriniz, yatırımınız veya iş birliği teklifiniz mi var? Bizimle konuşun.</p>
+      <form onSubmit={onSubmit} className="card space-y-4">
+        <input name="name" placeholder="Adınız" required className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 outline-none"/>
+        <input type="email" name="email" placeholder="E-posta" required className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 outline-none"/>
+        <textarea name="message" placeholder="Mesajınız" rows={5} required className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 outline-none"></textarea>
+        <button className="btn-primary" disabled={state==="loading"}>{state==="loading" ? "Gönderiliyor..." : "Gönder"}</button>
+        {state==="ok" && <p className="text-green-400">Mesaj alındı. Teşekkürler!</p>}
+        {state==="err" && <p className="text-red-400">Bir hata oluştu. Lütfen tekrar deneyin.</p>}
+      </form>
+      <div className="mt-8 text-sm text-white/70 space-y-1">
+        <div>📧 info@verilabs.ai</div>
+        <div>🔗 linkedin.com/company/verilabs</div>
+        <div>🐦 @verilabs_ai</div>
+      </div>
+    </section>
+  );
+}
+      ]]></file>
+
+      <file path="src/app/api/contact/route.ts"><![CDATA[
+export async function POST(req: Request) {
+  const form = await req.formData();
+  const name = form.get("name");
+  const email = form.get("email");
+  const message = form.get("message");
+  console.log("CONTACT_FORM", { name, email, message });
+  return new Response(JSON.stringify({ ok: true }), { status: 200 });
+}
+      ]]></file>
+
+      <!-- next-sitemap -->
+      <file path="next-sitemap.config.js"><![CDATA[
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: process.env.SITE_URL || "https://verilabs.ai",
+  generateRobotsTxt: true,
+  changefreq: "weekly",
+  priority: 0.7
+};
+      ]]></file>
+
+      <patch file="package.json"><![CDATA[
+{
+  "op": "merge",
+  "data": {
+    "scripts": {
+      "postbuild": "next-sitemap"
+    }
+  }
+}
+      ]]></patch>
+
+      <!-- OG/Favicon yer tutucu -->
+      <file path="public/og.png" binary="true">BASE64_PLACEHOLDER_PNG</file>
+      <file path="public/favicon.ico" binary="true">BASE64_PLACEHOLDER_ICO</file>
+    </files>
+
+    <quality_check>
+      <item>Temadan kurulum yapıldıysa npm i && npm run dev hatasız çalışmalı.</item>
+      <item>Fallback kurulumu: create-next-app çıktısı hatasız build etmeli.</item>
+      <item>/, /hakkimizda, /model, /projeler, /ekibimiz, /partner, /basin, /iletisim sayfaları 200 dönmeli.</item>
+      <item>/robots.txt ve /sitemap.xml üretilmiş olmalı.</item>
+      <item>İletişim formu POST 200 dönmeli.</item>
+      <item>Responsive kırılım yok, Lighthouse 90+.</item>
+    </quality_check>
+
+    <run_after>
+      <run>npm run dev</run>
+      <note>Eğer tema dosya yapısı farklıysa (örn. /src yerine /app kökü, özel layout), oluşturulan sayfalar yine /src/app altında çalışacaktır. Gerekirse Header/Footer stil sınıflarını tema sınıflarıyla eşleştir.</note>
+    </run_after>
+  </project>
+</agent3>
