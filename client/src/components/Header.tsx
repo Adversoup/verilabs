@@ -9,7 +9,6 @@ const navigation = [
   { href: "/model", label: "Venture Studio" },
   { href: "/projeler", label: "Projeler" },
   { href: "/ekibimiz", label: "Ekibimiz" },
-  { href: "/basin", label: "Basın & Güncellemeler" },
   { href: "/iletisim", label: "İletişim" }
 ];
 

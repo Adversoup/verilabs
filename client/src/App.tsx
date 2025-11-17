@@ -11,7 +11,6 @@ import About from "@/pages/about";
 import Model from "@/pages/model";
 import Projects from "@/pages/projects";
 import Team from "@/pages/team";
-import Press from "@/pages/press";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
@@ -23,7 +22,6 @@ function Router() {
       <Route path="/model" component={Model} />
       <Route path="/projeler" component={Projects} />
       <Route path="/ekibimiz" component={Team} />
-      <Route path="/basin" component={Press} />
       <Route path="/iletisim" component={Contact} />
       <Route component={NotFound} />
     </Switch>
