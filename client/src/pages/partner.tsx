@@ -46,7 +46,7 @@ export default function Partner() {
           return (
             <Card 
               key={index}
-              className="bg-white/5 border-white/10 backdrop-blur-sm overflow-hidden hover-elevate"
+              className="bg-primary/10 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate"
             >
               <CardHeader className="space-y-3">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">

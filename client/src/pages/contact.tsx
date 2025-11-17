@@ -113,7 +113,7 @@ export default function Contact() {
                               <Input
                                 {...field}
                                 placeholder="Adınız Soyadınız"
-                                className="bg-white/5 border-white/10 text-white placeholder:text-white/40"
+                                className="bg-primary/5 border-primary/30 text-white placeholder:text-white/40"
                                 data-testid="input-name"
                               />
                             </FormControl>
@@ -133,7 +133,7 @@ export default function Contact() {
                                 {...field}
                                 type="email"
                                 placeholder="ornek@email.com"
-                                className="bg-white/5 border-white/10 text-white placeholder:text-white/40"
+                                className="bg-primary/5 border-primary/30 text-white placeholder:text-white/40"
                                 data-testid="input-email"
                               />
                             </FormControl>
@@ -153,7 +153,7 @@ export default function Contact() {
                                 {...field}
                                 placeholder="Mesajınızı buraya yazın..."
                                 rows={6}
-                                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 resize-none"
+                                className="bg-primary/5 border-primary/30 text-white placeholder:text-white/40 resize-none"
                                 data-testid="input-message"
                               />
                             </FormControl>

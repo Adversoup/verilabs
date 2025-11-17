@@ -64,7 +64,7 @@ export default function Home() {
                 <Button 
                   size="lg" 
                   variant="outline"
-                  className="border-white/30 hover:bg-white/10 text-white gap-2 text-base px-8 py-6 backdrop-blur-sm shadow-xl"
+                  className="border-primary/30 hover:bg-primary/10 text-white gap-2 text-base px-8 py-6 backdrop-blur-sm shadow-xl"
                   data-testid="button-learn-more"
                 >
                   Venture Studio Yaklaşımımız
