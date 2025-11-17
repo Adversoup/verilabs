@@ -55,7 +55,7 @@ export default function Contact() {
         description="Bir fikriniz, yatırımınız veya iş birliği teklifiniz mi var? Bizimle konuşun."
         path="/iletisim"
       />
-      <div className="relative py-16">
+      <div className="relative min-h-screen py-16">
         <div 
           className="absolute inset-0 w-full h-full opacity-20 pointer-events-none z-0"
           style={{

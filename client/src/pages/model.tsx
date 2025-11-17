@@ -44,7 +44,7 @@ export default function Model() {
         description="Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder."
         path="/model"
       />
-      <div className="relative py-16 space-y-16">
+      <div className="relative min-h-screen py-16 space-y-16">
         <div 
           className="absolute inset-0 w-full h-full opacity-20 pointer-events-none z-0"
           style={{

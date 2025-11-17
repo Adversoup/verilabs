@@ -11,7 +11,7 @@ export default function About() {
         description="Verilabs, yapay zekâ temelli projeleri sadece geliştiren değil, onları iş modeline ve şirketleşme yolculuğuna dönüştüren bir teknoloji stüdyosudur."
         path="/hakkimizda"
       />
-      <div className="relative py-16 space-y-16">
+      <div className="relative min-h-screen py-16 space-y-16">
         <div 
           className="absolute inset-0 w-full h-full opacity-20 pointer-events-none z-0"
           style={{
