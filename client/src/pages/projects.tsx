@@ -14,7 +14,7 @@ export default function Projects() {
       />
       <div className="relative min-h-screen py-16 space-y-16">
         <div 
-          className="fixed inset-0 w-full h-full opacity-20 pointer-events-none z-0"
+          className="fixed inset-0 w-full h-full opacity-5 pointer-events-none z-0"
           style={{
             backgroundImage: `url(${bgImage})`,
             backgroundSize: 'cover',
