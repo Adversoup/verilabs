@@ -28,7 +28,7 @@ export default function Home() {
               <source src={heroVideo} type="video/mp4" />
             </video>
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F1A]/80 via-[#0B0F1A]/90 to-[#0B0F1A]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F1A]/40 via-[#0B0F1A]/60 to-[#0B0F1A]/90" />
           </div>
 
           {/* Content */}
