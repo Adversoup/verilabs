@@ -23,7 +23,7 @@ export default function Projects() {
 
         {/* Galgo */}
         <article id="galgo" className="scroll-mt-24 space-y-8">
-          <Card className="bg-gradient-to-br from-primary/10 to-black/5 border-primary/20 backdrop-blur-sm overflow-hidden hover-elevate">
+          <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate">
             <CardContent className="p-8 md:p-12 space-y-8">
               <div className="flex flex-wrap items-start justify-between gap-6">
                 <div className="space-y-3 flex-1">
@@ -108,7 +108,7 @@ export default function Projects() {
 
         {/* ProtoNest */}
         <article id="protonest" className="scroll-mt-24 space-y-8">
-          <Card className="bg-gradient-to-br from-primary/10 to-black/5 border-primary/20 backdrop-blur-sm overflow-hidden hover-elevate">
+          <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30 backdrop-blur-sm overflow-hidden hover-elevate">
             <CardContent className="p-8 md:p-12 space-y-8">
               <div className="flex flex-wrap items-start justify-between gap-6">
                 <div className="space-y-3 flex-1">
