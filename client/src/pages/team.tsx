@@ -7,33 +7,33 @@ import bgImage from "@assets/143788494_4d4d08ff-43f6-40ed-a04f-9a2f7091ebd4_1763
 const teamMembers = [
   {
     name: "Levent Gözener",
-    role: "Founder & Product Architect",
     initials: "LG",
     description: "VeriLabs'in ürün vizyonunu, teknik mimariyle iş modeli arasında köprü kurarak şekillendirir. Farklı sektörlerden edindiği deneyimi, yapay zekâ ve SaaS dünyasına taşır."
   },
   {
-    name: "[İsim]",
-    role: "AI Engineer",
-    initials: "AI",
-    description: "Modellerin seçimi, eğitimi, ince ayarı ve üretim ortamına alınmasından sorumludur."
+    name: "Göktuğ Yücekul",
+    initials: "GY",
+    description: "ABD'de yüksek lisans yapmış, ulusal ve uluslararası ajanslarda görev almıştır. Türkiye'de kurumsal iletişim ve iş geliştirme alanında uzun yıllardır çalışmaktadır. Projede operasyonların yürütülmesi, müşteri ilişkileri ve iş geliştirme süreçlerinden sorumludur."
   },
   {
-    name: "[İsim]",
-    role: "Frontend Developer",
-    initials: "FD",
-    description: "Kullanıcı arayüzlerini modern, hızlı ve sezgisel deneyimlere dönüştürür."
+    name: "Gökhan Yücel",
+    initials: "GY",
+    description: "Global ve yerel ölçekte pek çok markayla çalışmış, kendi ajansını kurarak 20'den fazla ülkede projeler yürütmüştür. ProtoNest'te marka yönetimi, pazarlama stratejileri ve uluslararası açılım konularında görev almaktadır."
   },
   {
-    name: "[İsim]",
-    role: "Data Scientist",
-    initials: "DS",
-    description: "Veri modelleme, metrik üretimi ve içgörü çıkarma süreçlerini yönetir."
+    name: "Prof. Dr. Sabri Burak Arzova",
+    initials: "SBA",
+    description: "Finansal piyasalar ve kurumsal finans konusunda uzman bir akademisyendir. Finansal modelleme ve yatırım stratejilerinde danışmanlık yapmaktadır."
   },
   {
-    name: "[İsim]",
-    role: "Growth & Partnerships",
-    initials: "GP",
-    description: "Ürünlerin pazar konumlandırmasını, iş ortaklıklarını ve büyüme stratejilerini şekillendirir."
+    name: "Prof. Dr. Şakir Erdem",
+    initials: "ŞE",
+    description: "Pazarlama ve marka yönetimi alanında akademik çalışmaları bulunan deneyimli bir hocadır. Projede marka stratejileri ve tüketici davranışları üzerine katkı sağlamaktadır."
+  },
+  {
+    name: "Cahit Gökçen Yücel",
+    initials: "CGY",
+    description: "Reklam planlaması, iletişim stratejisi, marka görünürlüğü ve sektörel iş birlikleri konularında destek verecektir."
   }
 ];
 
@@ -79,13 +79,10 @@ export default function Team() {
                       {member.initials}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="flex-1 space-y-1">
+                  <div className="flex-1">
                     <h3 className="text-lg font-semibold text-white" data-testid={`text-team-member-${index}-name`}>
                       {member.name}
                     </h3>
-                    <p className="text-sm text-white/60" data-testid={`text-team-member-${index}-role`}>
-                      {member.role}
-                    </p>
                   </div>
                 </div>
                 <p className="text-sm text-white/70 leading-relaxed">
