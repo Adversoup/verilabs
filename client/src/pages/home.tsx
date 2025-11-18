@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Rocket, Sparkles, Target, Users2, Lightbulb, Cpu, Building2 } from "lucide-react";
+import { ArrowRight, ShoppingBag, Rocket, Sparkles, Target, Users2, Lightbulb, Cpu, Building2 } from "lucide-react";
 import SEO from "@/components/SEO";
 import heroVideo from "@assets/13442303_1920_1080_30fps_1763389101419.mp4";
 
@@ -104,7 +104,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Hangi Alanlarda Çalışıyoruz?</h3>
                 <p className="text-white/70 leading-relaxed">
-                  Finansal içgörüden üretim optimizasyonuna kadar uzanan yelpazede çalışıyoruz. Galgo, yatırımcılar için AI destekli karar destek sistemi sunarken; ProtoNest, üreticilerin malzeme kullanımını ve süreç verimliliğini yapay zekâ ile yeniden tanımlıyor.
+                  Kişisel alışveriş deneyiminden üretim optimizasyonuna kadar uzanan yelpazede çalışıyoruz. Galgo, tüketiciler için AI destekli kişisel alışveriş asistanı sunarken; ProtoNest, üreticilerin malzeme kullanımını ve süreç verimliliğini yapay zekâ ile yeniden tanımlıyor.
                 </p>
               </Card>
             </div>
@@ -127,16 +127,16 @@ export default function Home() {
                       <h3 className="text-3xl font-bold text-white" data-testid="text-project-galgo-title">
                         Galgo
                       </h3>
-                      <p className="text-sm text-white/60 font-medium">AI Destekli Finansal İçgörü Motoru</p>
+                      <p className="text-sm text-white/60 font-medium">AI Destekli Kişisel Alışveriş Asistanı</p>
                     </div>
                     <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <TrendingUp className="text-primary" size={24} />
+                      <ShoppingBag className="text-primary" size={24} />
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <p className="text-white/80 leading-relaxed" data-testid="text-project-galgo-description">
-                    Galgo, dağınık veri kaynakları, karmaşık tablolar ve takip edilmesi güç piyasa dinamikleri arasında sıkışmış yatırımcılara yapay zekâ ile desteklenmiş net bir görünürlük sunar. Farklı veri kaynaklarından topladığı bilgileri anlamlandırır, risk-getiri dengesini analiz eder ve kullanıcıya anlaşılır öneriler üretir. Yatırım kararlarını tesadüfe bırakmak yerine, veriyle konuşan bir yapıya dönüştürmeyi hedefler.
+                    Galgo, tüketici alışkanlıklarını ve ihtiyaçlarını yapay zeka yardımıyla öngören, mobil öncelikli bir alışveriş asistanıdır. Günlük fırsat akışı, kişiselleştirilmiş moodboard/wishlist ve Pinterest entegrasyonu ile kullanıcıların zaman kazanmasını ve en iyi fırsatlara kolayca erişmesini sağlar. AI sohbet asistanı, kullanıcının tarzını öğrenerek giderek daha isabetli öneriler sunar.
                   </p>
                   <Link href="/projeler#galgo">
                     <Button 
