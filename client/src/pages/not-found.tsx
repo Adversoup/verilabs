@@ -1,31 +1,33 @@
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
-import SEO from "@/components/SEO";
+import { ArrowLeft } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function NotFound() {
+  const { lang } = useLanguage();
+
   return (
-    <>
-      <SEO 
-        title="Sayfa Bulunamadı"
-        description="Aradığınız sayfa mevcut değil veya taşınmış olabilir."
-        path="/404"
-      />
-      <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
-        <div className="text-center space-y-6">
-          <h1 className="text-6xl font-bold text-white" data-testid="text-error-code">404</h1>
-          <h2 className="text-2xl font-semibold text-white" data-testid="text-error-title">Sayfa Bulunamadı</h2>
-          <p className="text-white/70 max-w-md" data-testid="text-error-message">
-            Aradığınız sayfa mevcut değil veya taşınmış olabilir.
-          </p>
+    <section className="py-32 grid-bg border-b hairline">
+      <div className="max-w-3xl mx-auto px-6 text-center space-y-6">
+        <div className="font-mono-tech text-xs uppercase tracking-widest text-[#1A4BFF]">
+          404
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-medium tracking-tight text-[#0E1014]">
+          {lang === "tr" ? "Sayfa bulunamadı." : "Page not found."}
+        </h1>
+        <p className="text-[#525660]">
+          {lang === "tr"
+            ? "Aradığınız sayfa taşınmış veya mevcut olmayabilir."
+            : "The page you are looking for may have moved or does not exist."}
+        </p>
+        <div className="pt-2">
           <Link href="/">
-            <Button size="lg" className="mt-4 gap-2" data-testid="button-home">
-              <Home size={20} />
-              Ana Sayfaya Dön
-            </Button>
+            <span className="inline-flex items-center gap-2 bg-[#0E1014] hover:bg-[#1A4BFF] text-white text-sm font-medium px-6 py-3 rounded-full transition-colors cursor-pointer">
+              <ArrowLeft size={16} />
+              {lang === "tr" ? "Ana sayfaya dön" : "Back to home"}
+            </span>
           </Link>
         </div>
       </div>
-    </>
+    </section>
   );
 }

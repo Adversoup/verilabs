@@ -1,107 +1,109 @@
 import { Link } from "wouter";
-import { Linkedin, Twitter } from "lucide-react";
+import VeriLabsLogo from "@/components/VeriLabsLogo";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
-    <footer className="mt-24 border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-base">VeriLabs</h3>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Yapay zekâ ile işleyen ürünler geliştirir, büyütür ve ölçeklenebilir teknoloji şirketlerine dönüştürür.
+    <footer className="bg-[#0E1014] text-white border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 space-y-12">
+        <div className="grid md:grid-cols-12 gap-10">
+          <div className="md:col-span-5 space-y-4">
+            <Link href="/">
+              <VeriLabsLogo variant="light" />
+            </Link>
+            <p className="text-sm text-white/60 max-w-sm leading-relaxed">
+              {t.siteDesc}
             </p>
           </div>
 
-          {/* Pages Column */}
-          <div className="space-y-3">
-            <h4 className="text-white font-medium text-sm">Sayfalar</h4>
-            <ul className="space-y-2 text-sm">
+          <div className="md:col-span-2 space-y-3">
+            <div className="font-mono-tech text-[11px] uppercase tracking-widest text-white/40">
+              {t.footer.pages}
+            </div>
+            <ul className="space-y-2.5 text-sm text-white/75">
               <li>
-                <Link href="/hakkimizda">
-                  <span className="text-white/70 hover:text-white transition-colors cursor-pointer" data-testid="link-footer-about">
-                    Hakkımızda
-                  </span>
+                <Link href="/projeler" className="hover:text-white transition-colors">
+                  {t.nav.projects}
                 </Link>
               </li>
               <li>
-                <Link href="/model">
-                  <span className="text-white/70 hover:text-white transition-colors cursor-pointer" data-testid="link-footer-model">
-                    Venture Studio Modeli
-                  </span>
+                <Link href="/model" className="hover:text-white transition-colors">
+                  {t.nav.model}
                 </Link>
               </li>
               <li>
-                <Link href="/projeler">
-                  <span className="text-white/70 hover:text-white transition-colors cursor-pointer" data-testid="link-footer-projects">
-                    Projeler
-                  </span>
+                <Link href="/hakkimizda" className="hover:text-white transition-colors">
+                  {t.nav.about}
                 </Link>
               </li>
               <li>
-                <Link href="/ekibimiz">
-                  <span className="text-white/70 hover:text-white transition-colors cursor-pointer" data-testid="link-footer-team">
-                    Ekibimiz
-                  </span>
+                <Link href="/ekibimiz" className="hover:text-white transition-colors">
+                  {t.nav.team}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Resources Column */}
-          <div className="space-y-3">
-            <h4 className="text-white font-medium text-sm">Kaynaklar</h4>
-            <ul className="space-y-2 text-sm">
+          <div className="md:col-span-2 space-y-3">
+            <div className="font-mono-tech text-[11px] uppercase tracking-widest text-white/40">
+              {t.footer.ventures}
+            </div>
+            <ul className="space-y-2.5 text-sm text-white/75">
               <li>
-                <Link href="/basin">
-                  <span className="text-white/70 hover:text-white transition-colors cursor-pointer" data-testid="link-footer-press">
-                    Basın & Güncellemeler
-                  </span>
+                <Link href="/projeler#galgo" className="hover:text-white transition-colors">
+                  Galgo
                 </Link>
               </li>
               <li>
-                <a 
-                  href="https://www.linkedin.com/company/verilabs" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors inline-flex items-center gap-2"
-                  data-testid="link-footer-linkedin"
+                <Link href="/projeler#protonest" className="hover:text-white transition-colors">
+                  ProtoNest
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-3 space-y-3">
+            <div className="font-mono-tech text-[11px] uppercase tracking-widest text-white/40">
+              {t.footer.connect}
+            </div>
+            <ul className="space-y-2.5 text-sm text-white/75">
+              <li>
+                <a
+                  href="mailto:info@verilabs.ai"
+                  className="hover:text-white transition-colors"
                 >
-                  <Linkedin size={16} />
+                  info@verilabs.ai
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/verilabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://x.com/verilabs_ai" 
-                  target="_blank" 
+                <a
+                  href="https://x.com/verilabs_ai"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors inline-flex items-center gap-2"
-                  data-testid="link-footer-twitter"
+                  className="hover:text-white transition-colors"
                 >
-                  <Twitter size={16} />
                   X (Twitter)
                 </a>
               </li>
             </ul>
           </div>
-
-          {/* Contact Column */}
-          <div className="space-y-3">
-            <h4 className="text-white font-medium text-sm">İletişim</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li data-testid="text-footer-email">info@verilabs.ai</li>
-              <li data-testid="text-footer-location">İstanbul, Türkiye</li>
-            </ul>
-          </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-center text-xs text-white/60" data-testid="text-copyright">
-            © {new Date().getFullYear()} VeriLabs. Tüm hakları saklıdır.
-          </p>
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-white/45">
+          <span>VeriLabs · {t.footer.desc}</span>
+          <span className="font-mono-tech">© {new Date().getFullYear()} VeriLabs · verilabs.ai</span>
         </div>
       </div>
     </footer>

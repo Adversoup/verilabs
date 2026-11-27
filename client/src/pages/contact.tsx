@@ -1,249 +1,283 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Mail, Linkedin, Twitter, MapPin } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { Mail, MapPin, Linkedin, Twitter, ArrowRight } from "lucide-react";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
-import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import SEO from "@/components/SEO";
-import bgImage from "@assets/143788494_4d4d08ff-43f6-40ed-a04f-9a2f7091ebd4_1763392609882.jpg";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const { toast } = useToast();
-  
+
+  const initialTrack =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("track") || "founder"
+      : "founder";
+  const [selectedTrack, setSelectedTrack] = useState<string>(initialTrack);
+
   const form = useForm<InsertContact>({
     resolver: zodResolver(insertContactSchema),
     defaultValues: {
       name: "",
       email: "",
-      message: ""
-    }
+      message: "",
+    },
   });
 
   const contactMutation = useMutation({
-    mutationFn: (data: InsertContact) => 
-      apiRequest("POST", "/api/contact", data),
+    mutationFn: (data: InsertContact) => apiRequest("POST", "/api/contact", data),
     onSuccess: () => {
       toast({
-        title: "Mesaj gönderildi!",
-        description: "En kısa sürede size dönüş yapacağız."
+        title: t.contact.successTitle,
+        description: t.contact.successDesc,
       });
       form.reset();
     },
     onError: () => {
       toast({
-        title: "Bir hata oluştu",
-        description: "Lütfen tekrar deneyin veya doğrudan e-posta gönderin.",
-        variant: "destructive"
+        title: t.contact.errorTitle,
+        description: t.contact.errorDesc,
+        variant: "destructive",
       });
-    }
+    },
   });
 
   const onSubmit = (data: InsertContact) => {
-    contactMutation.mutate(data);
+    const activeTrackObj = t.closing.tracks.find((tr) => tr.id === selectedTrack);
+    const prefix = activeTrackObj ? `[${activeTrackObj.title}] ` : "";
+    contactMutation.mutate({
+      ...data,
+      message: `${prefix}${data.message}`,
+    });
   };
 
   return (
     <>
-      <SEO 
-        title="İletişim"
-        description="Bir fikriniz, yatırımınız veya iş birliği teklifiniz mi var? Bizimle konuşun."
-        path="/iletisim"
-      />
-      <div className="relative min-h-screen py-16">
-        <div 
-          className="fixed inset-0 w-full h-full opacity-5 pointer-events-none z-0"
-          style={{
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto space-y-12">
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
-              İletişim
-            </h1>
-            <p className="text-lg text-white/80 leading-relaxed" data-testid="text-contact-intro">
-              Bir fikriniz, yatırım düşünceniz, iş birliği teklifiniz ya da sadece merak ettiğiniz bir soru mu var? VeriLabs ile iletişime geçmek için resmi kanalların ötesinde, samimi bir diyalog alanı açmaya çalışıyoruz. Aşağıdaki form üzerinden bize ulaşabilir, doğrudan e-posta gönderebilir veya sosyal medya hesaplarımız üzerinden bağlantı kurabilirsiniz.
-            </p>
+      <SEO title={t.nav.contact} description={t.contact.intro} path="/iletisim" />
+
+      <section className="border-b hairline grid-bg py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-5">
+          <div className="font-mono-tech text-xs uppercase tracking-[0.14em] text-[#1A4BFF]">
+            {t.contact.eyebrow}
           </div>
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#0E1014]"
+            data-testid="text-page-title"
+          >
+            {t.contact.title}
+          </h1>
+          <p
+            className="text-lg text-[#525660] max-w-2xl leading-relaxed"
+            data-testid="text-contact-intro"
+          >
+            {t.contact.intro}
+          </p>
+        </div>
+      </section>
 
-          {/* Why Contact Us */}
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8">
-            <h2 className="text-xl font-semibold text-white mb-4">Neden Bizimle İletişime Geçebilirsiniz?</h2>
-            <ul className="text-white/70 leading-relaxed space-y-3">
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>VeriLabs projeleri hakkında daha detaylı bilgi almak için</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Galgo veya ProtoNest ile ilgili iş birliği imkanlarını konuşmak için</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Yeni bir AI projesi fikrini birlikte değerlendirmek için</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Yatırım veya ortaklık modelleri hakkında bilgi alışverişi için</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Ekibimizle tanışmak, kültürümüzü daha yakından görmek için</span>
-              </li>
-            </ul>
-          </Card>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden">
-                <CardHeader>
-                  <h2 className="text-xl font-semibold text-white" data-testid="text-form-title">
-                    Mesaj Gönderin
-                  </h2>
-                </CardHeader>
-                <CardContent>
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white/80">Adınız</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                placeholder="Adınız Soyadınız"
-                                className="bg-primary/5 border-primary/30 text-white placeholder:text-white/40"
-                                data-testid="input-name"
-                              />
-                            </FormControl>
-                            <FormMessage data-testid="error-name" />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white/80">E-posta</FormLabel>
-                            <FormControl>
-                              <Input
-                                {...field}
-                                type="email"
-                                placeholder="ornek@email.com"
-                                className="bg-primary/5 border-primary/30 text-white placeholder:text-white/40"
-                                data-testid="input-email"
-                              />
-                            </FormControl>
-                            <FormMessage data-testid="error-email" />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white/80">Mesajınız</FormLabel>
-                            <FormControl>
-                              <Textarea
-                                {...field}
-                                placeholder="Mesajınızı buraya yazın..."
-                                rows={6}
-                                className="bg-primary/5 border-primary/30 text-white placeholder:text-white/40 resize-none"
-                                data-testid="input-message"
-                              />
-                            </FormControl>
-                            <FormMessage data-testid="error-message" />
-                          </FormItem>
-                        )}
-                      />
-
-                      <Button
-                        type="submit"
-                        disabled={contactMutation.isPending}
-                        className="w-full bg-primary hover:bg-primary/90"
-                        data-testid="button-submit"
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
+          {/* Form Column */}
+          <div className="lg:col-span-8 bg-white border hairline p-8 lg:p-10 space-y-8">
+            <div className="space-y-3">
+              <div className="font-mono-tech text-xs uppercase tracking-widest text-[#525660]">
+                {t.contact.selectTopic}
+              </div>
+              <div className="grid sm:grid-cols-3 gap-3">
+                {t.closing.tracks.map((track) => {
+                  const active = selectedTrack === track.id;
+                  return (
+                    <button
+                      key={track.id}
+                      type="button"
+                      onClick={() => setSelectedTrack(track.id)}
+                      className={`text-left p-4 border transition-colors ${
+                        active
+                          ? "bg-[#0E1014] text-white border-[#0E1014]"
+                          : "bg-[#F6F5F1] text-[#0E1014] hairline hover:border-[#0E1014]"
+                      }`}
+                    >
+                      <div
+                        className={`font-mono-tech text-[10px] mb-1 ${
+                          active ? "text-[#8EA8FF]" : "text-[#1A4BFF]"
+                        }`}
                       >
-                        {contactMutation.isPending ? "Gönderiliyor..." : "Gönder"}
-                      </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
+                        {track.code}
+                      </div>
+                      <div className="text-xs font-medium">{track.title}</div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden">
-                <CardContent className="pt-6 space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Mail className="text-primary mt-1 flex-shrink-0" size={20} />
-                    <div>
-                      <div className="text-sm font-medium text-white/80 mb-1">E-posta</div>
-                      <a 
-                        href="mailto:info@verilabs.ai" 
-                        className="text-white hover:text-primary transition-colors"
-                        data-testid="link-email"
-                      >
-                        info@verilabs.ai
-                      </a>
-                    </div>
-                  </div>
+            <div className="border-t hairline pt-8 space-y-6">
+              <h2
+                className="text-xl font-medium text-[#0E1014]"
+                data-testid="text-form-title"
+              >
+                {t.contact.formTitle}
+              </h2>
 
-                  <div className="flex items-start gap-3">
-                    <MapPin className="text-primary mt-1 flex-shrink-0" size={20} />
-                    <div>
-                      <div className="text-sm font-medium text-white/80 mb-1">Konum</div>
-                      <p className="text-white" data-testid="text-location">İstanbul, Türkiye</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono-tech text-xs uppercase text-[#525660]">
+                          {t.contact.nameLabel}
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            placeholder={t.contact.namePlaceholder}
+                            className="bg-[#F6F5F1] border-[#DCD9CF] text-[#0E1014] rounded-none h-11 focus-visible:ring-[#1A4BFF]"
+                            data-testid="input-name"
+                          />
+                        </FormControl>
+                        <FormMessage data-testid="error-name" />
+                      </FormItem>
+                    )}
+                  />
 
-              <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden">
-                <CardHeader>
-                  <h3 className="text-lg font-semibold text-white">Sosyal Medya</h3>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <a 
-                    href="https://www.linkedin.com/company/verilabs" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-white/80 hover:text-white transition-colors"
-                    data-testid="link-social-linkedin"
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono-tech text-xs uppercase text-[#525660]">
+                          {t.contact.emailLabel}
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            type="email"
+                            placeholder={t.contact.emailPlaceholder}
+                            className="bg-[#F6F5F1] border-[#DCD9CF] text-[#0E1014] rounded-none h-11 focus-visible:ring-[#1A4BFF]"
+                            data-testid="input-email"
+                          />
+                        </FormControl>
+                        <FormMessage data-testid="error-email" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono-tech text-xs uppercase text-[#525660]">
+                          {t.contact.msgLabel}
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            {...field}
+                            placeholder={t.contact.msgPlaceholder}
+                            rows={5}
+                            className="bg-[#F6F5F1] border-[#DCD9CF] text-[#0E1014] rounded-none resize-none focus-visible:ring-[#1A4BFF]"
+                            data-testid="input-message"
+                          />
+                        </FormControl>
+                        <FormMessage data-testid="error-message" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <button
+                    type="submit"
+                    disabled={contactMutation.isPending}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#0E1014] hover:bg-[#1A4BFF] disabled:opacity-60 text-white text-sm font-medium py-3.5 transition-colors"
+                    data-testid="button-submit"
                   >
-                    <Linkedin size={20} className="text-primary" />
-                    LinkedIn
-                  </a>
-                  <a 
-                    href="https://x.com/verilabs_ai" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-white/80 hover:text-white transition-colors"
-                    data-testid="link-social-twitter"
+                    {contactMutation.isPending
+                      ? t.contact.submitting
+                      : t.contact.submit}
+                    <ArrowRight size={15} />
+                  </button>
+                </form>
+              </Form>
+            </div>
+          </div>
+
+          {/* Info Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="bg-white border hairline p-7 space-y-6">
+              <div className="flex items-start gap-3.5">
+                <Mail className="text-[#1A4BFF] mt-0.5 flex-shrink-0" size={18} />
+                <div>
+                  <div className="font-mono-tech text-[11px] uppercase text-[#525660]">
+                    {t.contact.directEmail}
+                  </div>
+                  <a
+                    href="mailto:info@verilabs.ai"
+                    className="text-sm font-medium text-[#0E1014] hover:text-[#1A4BFF] transition-colors"
+                    data-testid="link-email"
                   >
-                    <Twitter size={20} className="text-primary" />
-                    X (Twitter)
+                    info@verilabs.ai
                   </a>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5 border-t hairline pt-5">
+                <MapPin className="text-[#1A4BFF] mt-0.5 flex-shrink-0" size={18} />
+                <div>
+                  <div className="font-mono-tech text-[11px] uppercase text-[#525660]">
+                    {t.contact.location}
+                  </div>
+                  <p className="text-sm font-medium text-[#0E1014]" data-testid="text-location">
+                    {t.contact.locationVal}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border hairline p-7 space-y-4">
+              <div className="font-mono-tech text-[11px] uppercase tracking-widest text-[#525660]">
+                {t.contact.social}
+              </div>
+              <div className="space-y-3">
+                <a
+                  href="https://www.linkedin.com/company/verilabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-[#0E1014] hover:text-[#1A4BFF] transition-colors"
+                  data-testid="link-social-linkedin"
+                >
+                  <Linkedin size={16} className="text-[#1A4BFF]" />
+                  LinkedIn
+                </a>
+                <a
+                  href="https://x.com/verilabs_ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-[#0E1014] hover:text-[#1A4BFF] transition-colors"
+                  data-testid="link-social-twitter"
+                >
+                  <Twitter size={16} className="text-[#1A4BFF]" />
+                  X (Twitter)
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

@@ -1,154 +1,112 @@
-import { Card } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Users, Workflow, Award } from "lucide-react";
+import { Link } from "wouter";
+import { ArrowRight, Check } from "lucide-react";
 import SEO from "@/components/SEO";
-import bgImage from "@assets/143788494_4d4d08ff-43f6-40ed-a04f-9a2f7091ebd4_1763392609882.jpg";
-
-const teamMembers = [
-  {
-    name: "Levent Gözener",
-    initials: "LG",
-    description: "VeriLabs'in ürün vizyonunu, teknik mimariyle iş modeli arasında köprü kurarak şekillendirir. Farklı sektörlerden edindiği deneyimi, yapay zekâ ve SaaS dünyasına taşır."
-  },
-  {
-    name: "Göktuğ Yücekul",
-    initials: "GY",
-    description: "ABD'de yüksek lisans yapmış, ulusal ve uluslararası ajanslarda görev almıştır. Türkiye'de kurumsal iletişim ve iş geliştirme alanında uzun yıllardır çalışmaktadır. Projede operasyonların yürütülmesi, müşteri ilişkileri ve iş geliştirme süreçlerinden sorumludur."
-  },
-  {
-    name: "Gökhan Yücel",
-    initials: "GY",
-    description: "Global ve yerel ölçekte pek çok markayla çalışmış, kendi ajansını kurarak 20'den fazla ülkede projeler yürütmüştür. ProtoNest'te marka yönetimi, pazarlama stratejileri ve uluslararası açılım konularında görev almaktadır."
-  },
-  {
-    name: "Prof. Dr. Sabri Burak Arzova",
-    initials: "SBA",
-    description: "Finansal piyasalar ve kurumsal finans konusunda uzman bir akademisyendir. Finansal modelleme ve yatırım stratejilerinde danışmanlık yapmaktadır."
-  },
-  {
-    name: "Prof. Dr. Şakir Erdem",
-    initials: "ŞE",
-    description: "Pazarlama ve marka yönetimi alanında akademik çalışmaları bulunan deneyimli bir hocadır. Projede marka stratejileri ve tüketici davranışları üzerine katkı sağlamaktadır."
-  },
-  {
-    name: "Cahit Gökçen Yücel",
-    initials: "CGY",
-    description: "Reklam planlaması, iletişim stratejisi, marka görünürlüğü ve sektörel iş birlikleri konularında destek verecektir."
-  }
-];
+import { TEAM_MEMBERS, useLanguage } from "@/lib/i18n";
 
 export default function Team() {
+  const { lang, t } = useLanguage();
+
   return (
     <>
-      <SEO 
-        title="Ekibimiz"
-        description="VeriLabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur."
-        path="/ekibimiz"
-      />
-      <div className="relative min-h-screen py-16 space-y-16">
-        <div 
-          className="fixed inset-0 w-full h-full opacity-5 pointer-events-none z-0"
-          style={{
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="relative z-10 space-y-6 max-w-3xl">
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
-            Ekibimiz
+      <SEO title={t.team.title} description={t.team.subtitle} path="/ekibimiz" />
+
+      {/* Header */}
+      <section className="border-b hairline grid-bg py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-5">
+          <div className="font-mono-tech text-xs uppercase tracking-[0.14em] text-[#1A4BFF]">
+            {t.team.eyebrow}
+          </div>
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#0E1014]"
+            data-testid="text-page-title"
+          >
+            {t.team.title}
           </h1>
-          <p className="text-lg text-white/80 leading-relaxed">
-            VeriLabs ekibi, mühendislik, ürün yönetimi, iş geliştirme ve tasarım disiplinlerinden gelen insanların aynı masada oturduğu bir ekipten oluşur. Ünvanlardan çok, üretilen değere ve ortak vizyona önem veririz.
+          <p className="text-lg text-[#525660] max-w-3xl leading-relaxed">
+            {t.team.subtitle}
           </p>
         </div>
+      </section>
 
-        {/* Core Team */}
-        <div className="relative z-10 space-y-8">
-          <h2 className="text-2xl font-semibold text-white">Çekirdek Ekip</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teamMembers.map((member, index) => (
-              <Card 
-                key={index}
-                className="bg-primary/10 border-primary/20 backdrop-blur-sm overflow-hidden hover-elevate p-6 space-y-4"
+      {/* Leadership & Partners Grid */}
+      <section className="border-b hairline bg-white py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            {TEAM_MEMBERS.map((member, index) => (
+              <div
+                key={member.id}
+                className="team-card border hairline bg-[#F6F5F1] overflow-hidden flex flex-col"
               >
-                <div className="flex items-center gap-4">
-                  <Avatar className="w-16 h-16 bg-primary/10 border-2 border-primary/20">
-                    <AvatarFallback className="bg-primary/10 text-primary text-lg font-medium">
-                      {member.initials}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white" data-testid={`text-team-member-${index}-name`}>
-                      {member.name}
-                    </h3>
-                  </div>
+                <div className="aspect-[4/3] overflow-hidden bg-[#ECEAE3]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="portrait-img w-full h-full object-cover object-top"
+                  />
                 </div>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  {member.description}
-                </p>
-              </Card>
+                <div className="p-6 space-y-2 flex-1">
+                  <h2
+                    className="font-medium text-lg text-[#0E1014]"
+                    data-testid={`text-team-member-${index}-name`}
+                  >
+                    {member.name}
+                  </h2>
+                  <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#1A4BFF]">
+                    {member.role[lang]}
+                  </div>
+                  <p className="text-sm text-[#525660] leading-relaxed pt-1">
+                    {member.bio[lang]}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* How We Work & Culture */}
-        <div className="relative z-10 grid md:grid-cols-2 gap-8">
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Workflow className="text-primary" size={28} />
-            </div>
-            <h2 className="text-2xl font-semibold text-white mb-4">Nasıl Çalışıyoruz?</h2>
-            <p className="text-white/70 leading-relaxed">
-              VeriLabs ekibi, sabit silolar yerine akışkan takımlar halinde çalışır. Bir projede ürün tasarımı konuşulurken masada hem geliştirici hem veri bilimci hem de iş geliştirme tarafı bulunur. Bu sayede kararlar, tek bir perspektife sıkışmadan alınır. Teknik uygulanabilirlik, kullanıcı deneyimi ve iş modeli aynı anda tartılır.
-            </p>
-          </Card>
-
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Users className="text-primary" size={28} />
-            </div>
-            <h2 className="text-2xl font-semibold text-white mb-4">Kültürümüz</h2>
-            <ul className="text-white/70 leading-relaxed space-y-3">
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Hiyerarşi yerine sorumluluk alanları</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Uzun toplantılar yerine net gündemli oturumlar</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Kod kalitesi kadar problem kalitesine de önem verme</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary mt-1">•</span>
-                <span>Sürekli öğrenme ve paylaşım kültürü</span>
-              </li>
+      {/* How We Work + Join Us */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-8">
+          <div className="bg-white border hairline p-8 lg:p-10 space-y-5">
+            <h2 className="text-2xl font-medium tracking-tight">
+              {t.team.howTitle}
+            </h2>
+            <ul className="space-y-3.5 text-sm text-[#525660]">
+              {t.team.howItems.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check
+                    size={16}
+                    className="text-[#1A4BFF] mt-0.5 flex-shrink-0"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
-          </Card>
-        </div>
+          </div>
 
-        {/* What We Value */}
-        <Card className="relative z-10 bg-primary/10 border-primary/30 backdrop-blur-sm p-8 md:p-12 space-y-6">
-          <div className="flex items-start gap-4">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <Award className="text-primary" size={28} />
+          <div className="bg-[#0E1014] text-white p-8 lg:p-10 flex flex-col justify-between gap-8">
+            <div className="space-y-4">
+              <div className="font-mono-tech text-xs text-[#8EA8FF] uppercase tracking-widest">
+                CAREERS
+              </div>
+              <h2 className="text-2xl font-medium tracking-tight">
+                {t.team.joinTitle}
+              </h2>
+              <p className="text-sm text-white/75 leading-relaxed">
+                {t.team.joinDesc}
+              </p>
             </div>
-            <div className="flex-1 space-y-4">
-              <h2 className="text-3xl font-bold text-white">Neyi Önemsiyoruz?</h2>
-              <p className="text-white/70 leading-relaxed">
-                VeriLabs'ta güçlü CV'lerden çok, güçlü katkılar önemlidir. Bir ekip üyesinden beklediğimiz şey; merak duygusunu kaybetmemesi, veriye ve geribildirime açık olması ve "bu iş daha iyi nasıl yapılır" sorusunu her gün yeniden sormasıdır. Hatalarımızı saklamayız; onları öğrenme araçlarına dönüştürmeye çalışırız.
-              </p>
-              <p className="text-white/70 leading-relaxed">
-                Ekibimiz büyürken dikkat ettiğimiz en kritik nokta, kültürel uyumdur. Her yeni yetenek, sadece teknik beceri getirmez; aynı zamanda o kültürü şekillendiren bir aktör haline gelir. Bu nedenle ekip genişlerken değerlerimizden taviz vermemeye özen gösteririz.
-              </p>
+            <div>
+              <Link href="/iletisim?track=talent">
+                <span className="inline-flex items-center gap-2 bg-white text-[#0E1014] hover:bg-[#1A4BFF] hover:text-white text-xs font-medium px-5 py-3 rounded-full transition-colors cursor-pointer">
+                  {t.team.joinCta}
+                  <ArrowRight size={14} />
+                </span>
+              </Link>
             </div>
           </div>
-        </Card>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

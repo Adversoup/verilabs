@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useLanguage } from "@/lib/i18n";
 
 interface SEOProps {
   title: string;
@@ -8,27 +9,25 @@ interface SEOProps {
 }
 
 export default function SEO({ title, description, path = "/", image }: SEOProps) {
+  const { lang } = useLanguage();
   const siteUrl = "https://verilabs.ai";
   const fullUrl = `${siteUrl}${path}`;
-  const fullTitle = title === "VeriLabs – AI Venture Studio" ? title : `${title} | VeriLabs`;
+  const isHomeTitle = title.startsWith("VeriLabs");
+  const fullTitle = isHomeTitle ? title : `${title} | VeriLabs`;
   const ogImage = image || `${siteUrl}/og-image.png`;
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang }}>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      
-      {/* Open Graph */}
+
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="VeriLabs" />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      
-      {/* Twitter */}
+
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />

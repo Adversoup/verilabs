@@ -1,162 +1,115 @@
-import { Card } from "@/components/ui/card";
-import { Lightbulb, Beaker, TrendingUp, Rocket, Building2, Sparkles, Target, CheckCircle2 } from "lucide-react";
+import { Link } from "wouter";
+import { ArrowRight, Check } from "lucide-react";
 import SEO from "@/components/SEO";
-import bgImage from "@assets/143788494_4d4d08ff-43f6-40ed-a04f-9a2f7091ebd4_1763392609882.jpg";
-
-const phases = [
-  {
-    number: 1,
-    title: "Keşif ve Problem Tanımı",
-    description: "Önce problemi tarif ederiz, çözümü değil. Hangi sektörde, hangi aktörler arasında, hangi maliyet ya da verimsizlikten bahsettiğimizi net biçimde ortaya koyarız.",
-    icon: Lightbulb
-  },
-  {
-    number: 2,
-    title: "Hipotez ve Fikir Geliştirme",
-    description: "Yapay zekânın bu problemde gerçekten fark yaratacağı alanları belirleriz. Modelleme türünü, veri kaynaklarını ve olası çıktı biçimlerini tartışırız.",
-    icon: Sparkles
-  },
-  {
-    number: 3,
-    title: "MVP ve Prototipleme",
-    description: "Gereksiz özelliklerle vakit kaybetmek yerine, problemin kalbini test eden bir MVP geliştiririz. Kullanıcı geri bildirimi ve veri toplama en baştan tasarının parçasıdır.",
-    icon: Beaker
-  },
-  {
-    number: 4,
-    title: "Pazar Testi ve Validasyon",
-    description: "Ürünün gerçekten değer üretip üretmediğini, kullanıcıların ödeme isteğini, entegrasyon bariyerlerini ve büyüme potansiyelini test ederiz.",
-    icon: TrendingUp
-  },
-  {
-    number: 5,
-    title: "Spin-off ve Ölçeklendirme",
-    description: "Başarılı ürünleri ayrı bir marka ve şirket kimliği altında spin-off ederek yatırım ve büyüme için hazır hale getiririz.",
-    icon: Rocket
-  }
-];
+import ProcessSteps from "@/components/ProcessSteps";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Model() {
+  const { t } = useLanguage();
+
   return (
     <>
-      <SEO 
-        title="Venture Studio"
-        description="Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder."
+      <SEO
+        title={t.howWeWork.title}
+        description={t.howWeWork.intro}
         path="/model"
       />
-      <div className="relative min-h-screen py-16 space-y-16">
-        <div 
-          className="fixed inset-0 w-full h-full opacity-5 pointer-events-none z-0"
-          style={{
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
-        <div className="relative z-10 max-w-3xl space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight" data-testid="text-page-title">
-            Venture Studio
+
+      {/* Page Header */}
+      <section className="border-b hairline grid-bg py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-5">
+          <div className="font-mono-tech text-xs uppercase tracking-[0.14em] text-[#1A4BFF]">
+            {t.howWeWork.eyebrow}
+          </div>
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#0E1014]"
+            data-testid="text-page-title"
+          >
+            {t.howWeWork.title}
           </h1>
-          <p className="text-lg text-white/80 leading-relaxed">
-            Venture studio modeli, fikirleri yalnızca kuluçkaya alan değil, onları sistematik olarak büyüten ve şirketleştiren bir yapıyı ifade eder. VeriLabs, klasik ajans mantığından farklı olarak, her projeyi kendi markasına, kendi yol haritasına ve kendi yatırım hikâyesine sahip bağımsız bir girişim adayı olarak ele alır.
+          <p className="text-lg text-[#525660] max-w-3xl leading-relaxed">
+            {t.howWeWork.intro}
           </p>
         </div>
+      </section>
 
-        {/* What is Venture Studio */}
-        <div className="relative z-10 grid md:grid-cols-2 gap-8">
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Building2 className="text-primary" size={28} />
-            </div>
-            <h2 className="text-2xl font-semibold text-white mb-4">Venture Studio Nedir?</h2>
-            <p className="text-white/70 leading-relaxed">
-              Bir venture studio, tek tek müşteri projeleri geliştirmek yerine, kendi portföyüne ait ürünler ve şirketler inşa eder. Fikir, içeriden veya dışarıdan gelebilir; önemli olan, bu fikrin doğrulanmış bir probleme çözüm üretip üretmediği ve yapay zekâ gibi kaldıraçlara dayanıp dayanmadığıdır. Studio, fikri analiz eder, MVP'yi geliştirir, pazar testlerini yapar, büyüme stratejisini kurar ve nihayetinde ortaya çıkan projeyi ayrı bir girişim olarak spin-off edebilir.
-            </p>
-          </Card>
-
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Target className="text-primary" size={28} />
-            </div>
-            <h2 className="text-2xl font-semibold text-white mb-4">VeriLabs Nasıl Konumlanıyor?</h2>
-            <p className="text-white/70 leading-relaxed">
-              VeriLabs, venture studio modelini yapay zekâ ekseninde uygulayan bir yapı olarak konumlanır. Bizim için "ürün", bir kod deposundan ibaret değildir; kullanıcılarına net bir değer sunan, gelir modeli tanımlanmış, ölçeklenmesi planlanmış ve yatırım dosyası kurgulanmış yaşayan bir organizmadır. Bu nedenle ürün geliştirme, iş geliştirme ve teknik mimari aynı masada konuşulur.
-            </p>
-          </Card>
-        </div>
-
-        {/* Process */}
-        <div className="relative z-10 space-y-8">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">VeriLabs Venture Süreci</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Fikirden şirkete giden yolculukta izlediğimiz adımlar
+      {/* What is a Venture Studio & Why This Model */}
+      <section className="border-b hairline bg-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#DCD9CF]">
+          <div className="p-8 lg:p-14 space-y-4">
+            <div className="font-mono-tech text-xs text-[#1A4BFF]">01</div>
+            <h2 className="text-2xl lg:text-3xl font-medium tracking-tight">
+              {t.howWeWork.whatIsTitle}
+            </h2>
+            <p className="text-[#525660] leading-relaxed">
+              {t.howWeWork.whatIsDesc}
             </p>
           </div>
+          <div className="p-8 lg:p-14 space-y-4">
+            <div className="font-mono-tech text-xs text-[#1A4BFF]">02</div>
+            <h2 className="text-2xl lg:text-3xl font-medium tracking-tight">
+              {t.howWeWork.whyModelTitle}
+            </h2>
+            <p className="text-[#525660] leading-relaxed">
+              {t.howWeWork.whyModelDesc}
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {phases.map((phase) => {
-              const Icon = phase.icon;
-              return (
-                <Card 
-                  key={phase.number} 
-                  className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate"
+      {/* Interactive 5-Step Process */}
+      <section className="border-b hairline py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <ProcessSteps />
+        </div>
+      </section>
+
+      {/* Difference & Working with Founders */}
+      <section className="bg-white py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-8">
+          <div className="border hairline bg-[#F6F5F1] p-8 lg:p-10 space-y-6">
+            <h2 className="text-2xl font-medium tracking-tight">
+              {t.howWeWork.diffTitle}
+            </h2>
+            <ul className="space-y-4">
+              {t.howWeWork.diffItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-[#525660]"
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon className="text-primary" size={24} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm text-white/60 mb-1" data-testid={`text-phase-${phase.number}-number`}>
-                        Aşama {phase.number}
-                      </div>
-                      <h3 className="text-xl font-semibold text-white" data-testid={`text-phase-${phase.number}-title`}>
-                        {phase.title}
-                      </h3>
-                    </div>
-                  </div>
-                  <p className="text-white/70 leading-relaxed" data-testid={`text-phase-${phase.number}-description`}>
-                    {phase.description}
-                  </p>
-                </Card>
-              );
-            })}
+                  <Check
+                    size={16}
+                    className="text-[#1A4BFF] mt-0.5 flex-shrink-0"
+                  />
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border hairline bg-[#0E1014] text-white p-8 lg:p-10 flex flex-col justify-between gap-8">
+            <div className="space-y-4">
+              <div className="font-mono-tech text-xs text-[#8EA8FF] uppercase tracking-widest">
+                CO-FOUNDERS
+              </div>
+              <h2 className="text-2xl font-medium tracking-tight">
+                {t.howWeWork.foundersTitle}
+              </h2>
+              <p className="text-white/75 leading-relaxed text-sm">
+                {t.howWeWork.foundersDesc}
+              </p>
+            </div>
+            <div>
+              <Link href="/iletisim?track=founder">
+                <span className="inline-flex items-center gap-2 bg-white text-[#0E1014] hover:bg-[#1A4BFF] hover:text-white text-xs font-medium px-5 py-3 rounded-full transition-colors cursor-pointer">
+                  {t.closing.tracks[0].cta}
+                  <ArrowRight size={14} />
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
-
-        {/* Why Important & Difference */}
-        <div className="relative z-10 grid md:grid-cols-2 gap-8">
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <h3 className="text-2xl font-semibold text-white mb-4">Neden Önemli?</h3>
-            <p className="text-white/70 leading-relaxed">
-              Günümüz dünyasında sadece "iyi bir fikir" yeterli değil. Fikirlerin sistematik olarak test edilmesi, doğru ekiple geliştirilebilmesi ve sürdürülebilir bir iş modeline oturtulması gerekiyor. Venture studio modeli, bu süreci şans ve tesadüften çıkarıp, metot ve disiplin içine yerleştirir. VeriLabs, bu disiplinin AI odaklı yorumudur.
-            </p>
-          </Card>
-
-          <Card className="bg-primary/10 border-primary/20 backdrop-blur-sm p-8 hover-elevate">
-            <h3 className="text-2xl font-semibold text-white mb-4">VeriLabs'in Farkı</h3>
-            <ul className="text-white/70 leading-relaxed space-y-3">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span>AI ve veri odaklı düşünce yapısını merkeze alması</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span>Sadece teknik değil, iş modeli perspektifiyle karar alması</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span>Çoklu proje portföyüyle risk dağıtabilmesi</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span>Ürünleri uzun vadeli exit potansiyeliyle kurgulaması</span>
-              </li>
-            </ul>
-          </Card>
-        </div>
-      </div>
+      </section>
     </>
   );
 }
