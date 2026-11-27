@@ -159,60 +159,27 @@ export default function Home() {
             {/* GALGO */}
             <article className="bg-white border hairline flex flex-col justify-between group hover:border-[#0E1014] transition-colors">
               <div>
-                <div className="h-52 bg-[#0E1014] relative overflow-hidden p-6 flex flex-col justify-between">
-                  <div className="flex items-center justify-between relative z-10">
-                    <span className="font-mono-tech text-[11px] uppercase tracking-widest text-white/60">
-                      VENTURE 01 · CONSUMER AI
+                <div className="min-h-[13.5rem] bg-[#FAF9F6] border-b hairline grid-bg relative overflow-hidden p-7 flex flex-col justify-between gap-6">
+                  <div className="flex items-center justify-between gap-3 relative z-10">
+                    <span className="font-mono-tech text-[10px] sm:text-[11px] uppercase tracking-widest text-[#525660]">
+                      {t.ventures.galgo.eyebrow}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 font-mono-tech text-[11px] px-2.5 py-1 rounded-full bg-white/10 text-white border border-white/15">
+                    <span className="inline-flex items-center gap-1.5 font-mono-tech text-[11px] px-2.5 py-1 rounded-full bg-[#0E1014] text-white flex-shrink-0">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                       {t.ventures.galgo.status}
                     </span>
                   </div>
-                  <svg
-                    className="absolute inset-0 w-full h-full opacity-35"
-                    viewBox="0 0 500 220"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M40 160 C130 160, 150 70, 250 105 C350 140, 380 55, 465 65"
-                      stroke="#1A4BFF"
-                      strokeWidth="1.5"
+
+                  <div className="relative z-10 space-y-3">
+                    <img
+                      src="/images/galgo-logo.png"
+                      alt="Galgo"
+                      className="h-12 sm:h-14 w-auto object-contain mix-blend-multiply"
+                      data-testid="text-project-galgo-title"
                     />
-                    <path
-                      d="M40 120 C140 120, 180 175, 270 115 C360 55, 400 145, 465 130"
-                      stroke="#FFFFFF"
-                      strokeOpacity="0.4"
-                      strokeDasharray="4 4"
-                    />
-                    <circle cx="145" cy="112" r="4" fill="#FFFFFF" />
-                    <circle cx="250" cy="105" r="6" fill="#1A4BFF" />
-                    <circle
-                      cx="250"
-                      cy="105"
-                      r="14"
-                      stroke="#1A4BFF"
-                      strokeOpacity="0.5"
-                    />
-                    <circle cx="375" cy="88" r="4" fill="#FFFFFF" />
-                    <circle cx="465" cy="65" r="5" fill="#8EA8FF" />
-                  </svg>
-                  <div className="relative z-10 flex items-end justify-between">
-                    <div>
-                      <h3
-                        className="text-3xl font-medium text-white tracking-tight"
-                        data-testid="text-project-galgo-title"
-                      >
-                        Galgo
-                      </h3>
-                      <p className="text-xs text-white/70 mt-1">
-                        {t.ventures.galgo.tagline}
-                      </p>
-                    </div>
-                    <span className="font-mono-tech text-[11px] text-white/50">
-                      B2C · B2B2C
-                    </span>
+                    <p className="text-sm font-medium text-[#0E1014]">
+                      {t.ventures.galgo.tagline}
+                    </p>
                   </div>
                 </div>
 
@@ -223,8 +190,11 @@ export default function Home() {
                   >
                     {t.ventures.galgo.summary}
                   </p>
-                  <div className="border-l-2 border-[#1A4BFF] pl-4 py-1.5 bg-[#F6F5F1] text-xs text-[#0E1014] leading-relaxed">
-                    {t.ventures.galgo.engineNote}
+                  <div className="border-l-2 border-[#1A4BFF] pl-4 py-2 bg-[#F6F5F1] text-xs text-[#0E1014] leading-relaxed space-y-1">
+                    <p>{t.ventures.galgo.intro3}</p>
+                    <p className="font-mono-tech text-[11px] text-[#1A4BFF] pt-1">
+                      {t.ventures.galgo.motto}
+                    </p>
                   </div>
                   <div className="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                     {t.ventures.galgo.tags.map((tag) => (
@@ -257,102 +227,27 @@ export default function Home() {
             {/* PROTONEST */}
             <article className="bg-white border hairline flex flex-col justify-between group hover:border-[#0E1014] transition-colors">
               <div>
-                <div className="h-52 bg-[#14171D] relative overflow-hidden p-6 flex flex-col justify-between">
-                  <div className="flex items-center justify-between relative z-10">
-                    <span className="font-mono-tech text-[11px] uppercase tracking-widest text-white/60">
-                      VENTURE 02 · INDUSTRIAL AI
+                <div className="min-h-[13.5rem] bg-[#FAF9F6] border-b hairline grid-bg relative overflow-hidden p-7 flex flex-col justify-between gap-6">
+                  <div className="flex items-center justify-between gap-3 relative z-10">
+                    <span className="font-mono-tech text-[10px] sm:text-[11px] uppercase tracking-widest text-[#525660]">
+                      VENTURE 02 · INDUSTRIAL AI · B2B SAAS
                     </span>
-                    <span className="inline-flex items-center gap-1.5 font-mono-tech text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="inline-flex items-center gap-1.5 font-mono-tech text-[11px] px-2.5 py-1 rounded-full bg-[#0F766E] text-white flex-shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
                       {t.ventures.protonest.status}
                     </span>
                   </div>
-                  <svg
-                    className="absolute right-6 top-12 w-56 h-28 opacity-55"
-                    viewBox="0 0 240 120"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="236"
-                      height="116"
-                      stroke="white"
-                      strokeOpacity="0.25"
-                      strokeDasharray="3 3"
+
+                  <div className="relative z-10 space-y-3">
+                    <img
+                      src="/images/protonest-logo.png"
+                      alt="ProtoNest"
+                      className="h-12 sm:h-14 w-auto object-contain mix-blend-multiply"
+                      data-testid="text-project-protonest-title"
                     />
-                    <rect
-                      x="8"
-                      y="8"
-                      width="72"
-                      height="48"
-                      fill="#1A4BFF"
-                      fillOpacity="0.25"
-                      stroke="#8EA8FF"
-                    />
-                    <rect
-                      x="84"
-                      y="8"
-                      width="96"
-                      height="32"
-                      fill="#10B981"
-                      fillOpacity="0.2"
-                      stroke="#34D399"
-                    />
-                    <rect
-                      x="184"
-                      y="8"
-                      width="48"
-                      height="68"
-                      fill="#1A4BFF"
-                      fillOpacity="0.2"
-                      stroke="#8EA8FF"
-                    />
-                    <rect
-                      x="8"
-                      y="60"
-                      width="112"
-                      height="52"
-                      fill="#10B981"
-                      fillOpacity="0.22"
-                      stroke="#34D399"
-                    />
-                    <rect
-                      x="124"
-                      y="44"
-                      width="56"
-                      height="68"
-                      fill="#FFFFFF"
-                      fillOpacity="0.08"
-                      stroke="white"
-                      strokeOpacity="0.5"
-                    />
-                    <rect
-                      x="184"
-                      y="80"
-                      width="48"
-                      height="32"
-                      fill="#10B981"
-                      fillOpacity="0.25"
-                      stroke="#34D399"
-                    />
-                  </svg>
-                  <div className="relative z-10 flex items-end justify-between">
-                    <div>
-                      <h3
-                        className="text-3xl font-medium text-white tracking-tight"
-                        data-testid="text-project-protonest-title"
-                      >
-                        ProtoNest
-                      </h3>
-                      <p className="text-xs text-white/70 mt-1">
-                        {t.ventures.protonest.tagline}
-                      </p>
-                    </div>
-                    <span className="font-mono-tech text-[11px] text-emerald-300">
-                      B2B SaaS
-                    </span>
+                    <p className="text-sm font-medium text-[#0E1014]">
+                      {t.ventures.protonest.tagline}
+                    </p>
                   </div>
                 </div>
 

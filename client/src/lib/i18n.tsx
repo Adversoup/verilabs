@@ -256,19 +256,52 @@ export const COPY = {
       subtitle: "Tüketiciden üreticiye, günlük kararları kolaylaştıran ürünler.",
       detailsBtn: "Detaylar",
       galgo: {
+        eyebrow: "VENTURE 01 · AI COMMERCE · PERSONAL SHOPPING INTELLIGENCE",
         status: "Beta",
-        tagline: "Yapay zekâ destekli kişisel alışveriş asistanı & karar motoru",
+        tagline: "Alışverişin gerçekleştiği her yerde çalışan kişisel yapay zekâ.",
         summary:
-          "Galgo, kullanıcının tarzını ve ihtiyaçlarını öğrenerek ona uygun fırsatları öne çıkaran, mobil öncelikli bir alışveriş asistanıdır. Günlük fırsat akışı, kişisel istek listesi ve Pinterest entegrasyonu sunar. Sohbet asistanı, kullanıldıkça daha isabetli öneriler yapar.",
-        engineNote:
-          "Commerce platformlarının kendi arayüzlerinden çağırabildiği, kullanıcı odaklı yapay zekâ karar motoru mimarisi.",
-        tags: [
-          "Kişiselleştirilmiş Akış",
-          "AI Sohbet Asistanı",
-          "Pinterest Sync",
-          "Karar Motoru API",
+          "Galgo, kullanıcıların stilini, tercihlerini, ihtiyaçlarını ve alışveriş alışkanlıklarını öğrenerek daha akıllı satın alma kararları vermelerini sağlayan yapay zekâ destekli bir kişisel alışveriş zekâsı platformudur.",
+        intro2:
+          "Geleneksel alışveriş asistanlarından farklı olarak Galgo, kullanıcıların yeni bir platforma gelmesini beklemek yerine, alışveriş deneyiminin gerçekleştiği ortamlara entegre olmayı hedefler.",
+        intro3:
+          "Browser extension, embedded SDK ve API-first mimarisiyle Galgo; e-ticaret sitelerinin, dijital pazar yerlerinin ve AI destekli alışveriş platformlarının kullanabileceği bağımsız bir karar ve kişiselleştirme katmanı olarak geliştirilmektedir.",
+        vision:
+          "Galgo'nun vizyonu, ürünleri yalnızca arayan değil; kullanıcıyı tanıyan, ihtiyaçlarını anlayan ve doğru satın alma kararını doğru zamanda destekleyen bir alışveriş zekâsı oluşturmaktır.",
+        pillars: [
+          {
+            title: "Personal Shopping Intelligence",
+            subtitle: "Kullanıcıyı tanıyan, tercihlerini hatırlayan alışveriş zekâsı.",
+            desc: "Galgo, kullanıcıların kişisel stilini, bütçesini, ürün tercihlerini ve alışveriş niyetini analiz ederek ürünleri kişiye özel olarak değerlendirir. Zaman içerisinde gelişen kullanıcı profili, daha anlamlı önerilerin ve isabetli alışveriş kararlarının temelini oluşturur.",
+          },
+          {
+            title: "Contextual Shopping Assistant",
+            subtitle: "Alışveriş deneyiminin tam içinde, doğru anda.",
+            desc: "Galgo'nun browser extension yaklaşımı, kullanıcıların ziyaret ettikleri ürün sayfalarında kişiselleştirilmiş analiz ve önerilere erişmesini hedefler. Kullanıcı farklı mağazalarda alışveriş yaparken aynı kişisel tercih ve ihtiyaç profilinden yararlanabilir.",
+          },
+          {
+            title: "Smart Wishlist & Opportunity Tracking",
+            subtitle: "İhtiyaçları hatırlayan, fırsatları takip eden kişisel asistan.",
+            desc: "Galgo, kullanıcıların beğendikleri ürünleri, moodboard'larını ve satın alma hedeflerini bir araya getirir. Fiyat ve stok verilerinin erişilebilir olduğu kaynaklarda, seçilen ürünlerin takip edilmesi ve uygun fırsatlar oluştuğunda kullanıcıların bilgilendirilmesi hedeflenir.",
+          },
+          {
+            title: "Commerce Intelligence API & SDK",
+            subtitle: "Mevcut commerce platformları için entegre edilebilir AI.",
+            desc: "Galgo'nun API-first mimarisi, kişiselleştirme ve satın alma karar yeteneklerini üçüncü taraf platformların kullanımına açmayı hedefler. E-ticaret şirketleri, marketplace'ler ve AI commerce uygulamaları Galgo'nun karar motorunu kendi kullanıcı deneyimlerine entegre ederek mevcut ürün kataloglarını kişisel önerilere dönüştürebilir.",
+          },
         ],
-        footer: "Mobil Öncelikli · Commerce AI",
+        evolutionTitle: "From Shopping Assistant to Shopping Intelligence",
+        evolutionP1:
+          "Galgo, bağımsız bir alışveriş asistanı olarak başlayan yolculuğunu, dijital ticaret ekosisteminin farklı noktalarında kullanılabilecek bir yapay zekâ altyapısına dönüştürüyor.",
+        evolutionP2:
+          "Kişisel stil analizi, AI sohbet asistanı, Pinterest destekli ilham ve keşif deneyimi, moodboard ve wishlist gibi mevcut yetenekler; platformdan bağımsız çalışabilen yeni bir kişiselleştirme mimarisinin temelini oluşturuyor.",
+        motto: "One intelligence. Every shopping experience.",
+        tags: [
+          "Browser Extension",
+          "Embedded SDK",
+          "API-First",
+          "Shopping Intelligence",
+        ],
+        footer: "AI Commerce · Personal Shopping Intelligence",
       },
       protonest: {
         status: "Pilot",
@@ -476,20 +509,52 @@ export const COPY = {
         "Products that make everyday decisions easier, from consumers to manufacturers.",
       detailsBtn: "Learn more",
       galgo: {
+        eyebrow: "VENTURE 01 · AI COMMERCE · PERSONAL SHOPPING INTELLIGENCE",
         status: "Beta",
-        tagline:
-          "AI-powered personal shopping assistant & commerce decision engine",
+        tagline: "Personal AI that works everywhere shopping happens.",
         summary:
-          "Galgo is a mobile-first shopping assistant that learns each user's style and needs and surfaces the deals that fit them. It offers a daily deal feed, a personal wishlist and Pinterest integration. Its chat assistant makes sharper recommendations the more it is used.",
-        engineNote:
-          "User-centric AI decision engine architecture designed to integrate directly into commerce platforms.",
-        tags: [
-          "Personalized Feed",
-          "AI Chat Assistant",
-          "Pinterest Sync",
-          "Decision Engine API",
+          "Galgo is an AI-powered personal shopping intelligence platform that learns each user's style, preferences, needs, and shopping habits to support smarter purchasing decisions.",
+        intro2:
+          "Unlike traditional shopping assistants, Galgo does not wait for users to visit a new destination—it integrates directly into the environments where shopping already happens.",
+        intro3:
+          "Built with a browser extension, embedded SDK, and API-first architecture, Galgo serves as an independent decision and personalization layer for e-commerce sites, digital marketplaces, and AI-powered commerce platforms.",
+        vision:
+          "Galgo's vision is to build a shopping intelligence that does not merely search for products—it knows the user, understands their needs, and supports the right purchasing decision at the right moment.",
+        pillars: [
+          {
+            title: "Personal Shopping Intelligence",
+            subtitle: "Shopping intelligence that knows the user and remembers their preferences.",
+            desc: "Galgo evaluates products individually by analyzing personal style, budget, product preferences, and shopping intent. An evolving user profile forms the foundation for sharper recommendations and more confident decisions.",
+          },
+          {
+            title: "Contextual Shopping Assistant",
+            subtitle: "Right inside the shopping experience, at the right moment.",
+            desc: "Galgo's browser extension brings personalized analysis and recommendations directly onto the product pages users visit—allowing them to carry the same personal preference profile across every store.",
+          },
+          {
+            title: "Smart Wishlist & Opportunity Tracking",
+            subtitle: "A personal assistant that remembers needs and tracks opportunities.",
+            desc: "Galgo brings together saved products, moodboards, and purchasing goals. Where price and stock data are accessible, it tracks selected items and alerts users when the right opportunity arises.",
+          },
+          {
+            title: "Commerce Intelligence API & SDK",
+            subtitle: "Embeddable AI built for existing commerce platforms.",
+            desc: "Galgo's API-first architecture opens personalization and decision-making capabilities to third-party platforms. E-commerce companies, marketplaces, and AI commerce apps can embed Galgo's decision engine to turn existing catalogs into personalized recommendations.",
+          },
         ],
-        footer: "Mobile-First · Commerce AI",
+        evolutionTitle: "From Shopping Assistant to Shopping Intelligence",
+        evolutionP1:
+          "Galgo is evolving from a standalone shopping assistant into an AI infrastructure layer usable across the entire digital commerce ecosystem.",
+        evolutionP2:
+          "Existing capabilities—including personal style analysis, AI chat assistant, Pinterest-powered inspiration and discovery, moodboards, and wishlists—form the core of a new platform-independent personalization architecture.",
+        motto: "One intelligence. Every shopping experience.",
+        tags: [
+          "Browser Extension",
+          "Embedded SDK",
+          "API-First",
+          "Shopping Intelligence",
+        ],
+        footer: "AI Commerce · Personal Shopping Intelligence",
       },
       protonest: {
         status: "Pilot",
